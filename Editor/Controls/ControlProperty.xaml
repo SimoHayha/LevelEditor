@@ -1,0 +1,49 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:Model="clr-namespace:Editor.Model"
+             xmlns:local="clr-namespace:Editor.Controls" x:Class="Editor.Controls.ControlProperty"
+             xmlns:avalonDock="http://schemas.xceed.com/wpf/xaml/avalondock"
+             mc:Ignorable="d" 
+             Background="Silver"
+             d:DesignHeight="500" d:DesignWidth="300">
+    <Grid>
+        <avalonDock:DockingManager x:Name="propertyDockingManager">
+            <avalonDock:LayoutRoot>
+                <avalonDock:LayoutPanel Orientation="Vertical">
+                    <avalonDock:LayoutAnchorablePane DockWidth="200">
+                        <avalonDock:LayoutAnchorable Title="Transformation">
+                            <local:TransformationControl />
+                        </avalonDock:LayoutAnchorable>
+                    </avalonDock:LayoutAnchorablePane>
+                    
+                    <avalonDock:LayoutAnchorablePane DockWidth="200">
+                        <avalonDock:LayoutAnchorable Title="Rotation">
+                            <local:RotationControl />
+                        </avalonDock:LayoutAnchorable>
+                    </avalonDock:LayoutAnchorablePane>
+                    
+                    <avalonDock:LayoutAnchorablePane DockWidth="200">
+                        <avalonDock:LayoutAnchorable Title="Scaling">
+                            <local:ScaleControl />
+                        </avalonDock:LayoutAnchorable>
+                    </avalonDock:LayoutAnchorablePane>
+                    
+                    <avalonDock:LayoutAnchorablePane DockWidth="200">
+                        <avalonDock:LayoutAnchorable Title="Animation">
+                            <local:AnimationControl />
+                        </avalonDock:LayoutAnchorable>
+                    </avalonDock:LayoutAnchorablePane>
+                    
+                    <avalonDock:LayoutAnchorablePane DockWidth="200">
+                        <avalonDock:LayoutAnchorable Title="Viewports">
+                            <local:ViewportControl />
+                        </avalonDock:LayoutAnchorable>
+                    </avalonDock:LayoutAnchorablePane>
+                </avalonDock:LayoutPanel>
+            </avalonDock:LayoutRoot>
+        </avalonDock:DockingManager>
+    </Grid>
+</UserControl>

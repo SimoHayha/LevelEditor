@@ -1,0 +1,126 @@
+﻿<Window x:Class="Editor.RessourcesWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="RessourcesWindow" Height="300" Width="300">
+	<Grid>
+		<TabControl>
+			<TabItem Header="Models">
+				<ListBox x:Name="listModels">
+					<ListBox.ItemTemplate>
+						<DataTemplate>
+							<TextBlock Text="{Binding}"/>
+						</DataTemplate>
+					</ListBox.ItemTemplate>
+				</ListBox>
+			</TabItem>
+			<TabItem Header="Materials">
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="*" />
+						<RowDefinition Height="2*" />
+					</Grid.RowDefinitions>
+					<ListBox x:Name="listMaterials" Grid.Row="0" ItemsSource="{Binding SelectedEntity.Materials}">
+						<ListBox.ItemTemplate>
+							<DataTemplate>
+								<TextBlock Text="{Binding Name}"/>
+							</DataTemplate>
+						</ListBox.ItemTemplate>
+					</ListBox>
+					<Grid Grid.Row="1">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="*" />
+							<RowDefinition Height="*" />
+							<RowDefinition Height="*" />
+							<RowDefinition Height="*" />
+							<RowDefinition Height="*" />
+							<RowDefinition Height="*" />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="2*"/>
+							<ColumnDefinition Width="20"/>
+							<ColumnDefinition Width="*"/>
+							<ColumnDefinition Width="20"/>
+							<ColumnDefinition Width="*"/>
+							<ColumnDefinition Width="20"/>
+							<ColumnDefinition Width="*"/>
+						</Grid.ColumnDefinitions>
+						<Label Grid.Row="0" Content="Emissive "/>
+						<Label Grid.Row="0" Grid.Column="1" Content="R"/>
+						<TextBox Grid.Row="0" Grid.Column="2" Text="{Binding SelectedItem.EmmisiveX, ElementName=listMaterials}"/>
+						<Label Grid.Row="0" Grid.Column="3" Content="G"/>
+						<TextBox Grid.Row="0" Grid.Column="4" Text="{Binding SelectedItem.EmmisiveY, ElementName=listMaterials}"/>
+						<Label Grid.Row="0" Grid.Column="5" Content="B"/>
+						<TextBox Grid.Row="0" Grid.Column="6" Text="{Binding SelectedItem.EmmisiveZ, ElementName=listMaterials}"/>
+						<Label Grid.Row="1" Content="Ambient "/>
+						<Label Grid.Row="1" Grid.Column="1" Content="R"/>
+						<TextBox Grid.Row="1" Grid.Column="2" Text="{Binding SelectedItem.AmbientX, ElementName=listMaterials}"/>
+						<Label Grid.Row="1" Grid.Column="3" Content="G"/>
+						<TextBox Grid.Row="1" Grid.Column="4" Text="{Binding SelectedItem.AmbientY, ElementName=listMaterials}"/>
+						<Label Grid.Row="1" Grid.Column="5" Content="B"/>
+						<TextBox Grid.Row="1" Grid.Column="6" Text="{Binding SelectedItem.AmbientZ, ElementName=listMaterials}"/>
+						<Label Grid.Row="2" Content="Diffuse "/>
+						<Label Grid.Row="2" Grid.Column="1" Content="R"/>
+						<TextBox Grid.Row="2" Grid.Column="2" Text="{Binding SelectedItem.DiffuseX, ElementName=listMaterials}"/>
+						<Label Grid.Row="2" Grid.Column="3" Content="G"/>
+						<TextBox Grid.Row="2" Grid.Column="4" Text="{Binding SelectedItem.DiffuseY, ElementName=listMaterials}"/>
+						<Label Grid.Row="2" Grid.Column="5" Content="B"/>
+						<TextBox Grid.Row="2" Grid.Column="6" Text="{Binding SelectedItem.DiffuseZ, ElementName=listMaterials}"/>
+						<Label Grid.Row="3" Content="Specular "/>
+						<Label Grid.Row="3" Grid.Column="1" Content="R"/>
+						<TextBox Grid.Row="3" Grid.Column="2" Text="{Binding SelectedItem.SpecularX, ElementName=listMaterials}"/>
+						<Label Grid.Row="3" Grid.Column="3" Content="G"/>
+						<TextBox Grid.Row="3" Grid.Column="4" Text="{Binding SelectedItem.SpecularY, ElementName=listMaterials}"/>
+						<Label Grid.Row="3" Grid.Column="5" Content="B"/>
+						<TextBox Grid.Row="3" Grid.Column="6" Text="{Binding SelectedItem.SpecularZ, ElementName=listMaterials}"/>
+						<Label Grid.Row="4" Content="Shinness "/>
+						<TextBox Grid.Row="4" Grid.Column="2" Text="{Binding SelectedItem.Shinness, ElementName=listMaterials}"/>
+						<Label Grid.Row="5" Content="Texture "/>
+					</Grid>
+				</Grid>
+			</TabItem>
+			<TabItem Header="Textures">
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*"/>
+						<ColumnDefinition Width="2*"/>
+					</Grid.ColumnDefinitions>
+					<ListBox x:Name="listTextures" Grid.Column="0">
+						<ListBox.ItemTemplate>
+							<DataTemplate>
+								<TextBlock Text="{Binding}"/>
+							</DataTemplate>
+						</ListBox.ItemTemplate>
+					</ListBox>
+					<Image Grid.Column="1" Source="{Binding SelectedItem, ElementName=listTextures}" />
+				</Grid>
+			</TabItem>
+			<TabItem Header="Scripts">
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*" />
+						<ColumnDefinition Width="2*" />
+					</Grid.ColumnDefinitions>
+					<Grid.RowDefinitions>
+						<RowDefinition />
+						<RowDefinition Height="Auto" />
+					</Grid.RowDefinitions>
+					<ListBox x:Name="listScript" Grid.Column="0" Grid.Row="0" SelectionChanged="listScript_SelectionChanged">
+						<ListBox.ItemTemplate>
+							<DataTemplate>
+								<TextBlock Text="{Binding}"/>
+							</DataTemplate>
+						</ListBox.ItemTemplate>
+					</ListBox>
+					<Button Grid.Column="0" Grid.Row="1" Click="NewScript">
+						New
+					</Button>
+					<TextBox x:Name="textScript" Grid.Column="1" Grid.Row="0" TextWrapping="Wrap"
+							 AcceptsReturn="True" VerticalScrollBarVisibility="Visible" AcceptsTab="True"/>
+					<Button Grid.Column="1" Grid.Row="1" Click="SaveScript">
+						Save
+					</Button>
+				</Grid>
+			</TabItem>
+		</TabControl>
+	</Grid>
+</Window>

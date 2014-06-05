@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{7DD25B87-84C7-4D1C-86DE-193C2320C444}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>DirectX_Engine</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(IncludePath)</IncludePath>
+    <LibraryPath>$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <TargetExt>.dll</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;UNMANAGED_EXPORTS;DIRECT3D_VERSION;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\lib\LuaBridge-master\Source\LuaBridge;..\lib\lua-5.2.2\src;..\lib\DirectXTex\include;C:\Program Files\Autodesk\FBX\FBX SDK\2014.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MinimalRebuild>false</MinimalRebuild>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>dxgi.lib;d3d11.lib;d3d10.lib;d3dcompiler.lib;libfbxsdk-md.lib;libfbxsdk-mt.lib;DirectXTex.lib;lua-5.2.2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>..\Debug\$(ProjectName).dll</OutputFile>
+      <AdditionalLibraryDirectories>..\lib\DirectXTex\lib-debug;C:\Program Files\Autodesk\FBX\FBX SDK\2014.1\lib\vs2012\x86\debug;..\lib\lua-5.2.2\lib-debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <TurnOffAssemblyGeneration>false</TurnOffAssemblyGeneration>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>Disabled</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;UNMANAGED_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Program Files\Autodesk\FBX\FBX SDK\2014.1\include;..\lib\lua-5.2.2\src;..\lib\LuaBridge-master\Source\LuaBridge;..\lib\DirectXTex\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAsManaged>false</CompileAsManaged>
+      <DebugInformationFormat>None</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>C:\Program Files\Autodesk\FBX\FBX SDK\2014.1\lib\vs2012\x86\release;..\lib\DirectXTex\lib-release;..\lib\lua-5.2.2\lib-release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>dxgi.lib;d3d11.lib;d3d10.lib;d3dcompiler.lib;libfbxsdk-md.lib;DirectXTex.lib;lua-5.2.2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Arrow.cpp" />
+    <ClCompile Include="BoundingBox.cpp" />
+    <ClCompile Include="BspFile.cpp" />
+    <ClCompile Include="Buffers.cpp" />
+    <ClCompile Include="Clock.cpp" />
+    <ClCompile Include="Container.cpp" />
+    <ClCompile Include="Cube.cpp" />
+    <ClCompile Include="Dictionnary.cpp" />
+    <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="EntityManager.cpp" />
+    <ClCompile Include="FBX_Animator.cpp" />
+    <ClCompile Include="FBX_Manager.cpp" />
+    <ClCompile Include="FBX_Material.cpp" />
+    <ClCompile Include="FBX_Mesh.cpp" />
+    <ClCompile Include="FBX_Model.cpp" />
+    <ClCompile Include="Field.cpp" />
+    <ClCompile Include="FpsCam.cpp" />
+    <ClCompile Include="FreeCamera.cpp" />
+    <ClCompile Include="GameTimer.cpp" />
+    <ClCompile Include="Graphic.cpp" />
+    <ClCompile Include="Grid.cpp" />
+    <ClCompile Include="Input.cpp" />
+    <ClCompile Include="Light.cpp" />
+    <ClCompile Include="Linelist.cpp" />
+    <ClCompile Include="Log.cpp" />
+    <ClCompile Include="LuaEntity.cpp" />
+    <ClCompile Include="LuaInput.cpp" />
+    <ClCompile Include="LuaScript.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Model.cpp" />
+    <ClCompile Include="MovementController.cpp" />
+    <ClCompile Include="NvDataProvider.cpp" />
+    <ClCompile Include="Overlay.cpp" />
+    <ClCompile Include="RayCaster.cpp" />
+    <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="ShaderManager.cpp" />
+    <ClCompile Include="Sphere.cpp" />
+    <ClCompile Include="SystemClass.cpp" />
+    <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="TextureShader.cpp" />
+    <ClCompile Include="UnmanagedEntity.cpp" />
+    <ClCompile Include="UnmanagedLog.cpp" />
+    <ClCompile Include="UnmanagedMaterial.cpp" />
+    <ClCompile Include="UnmanagedPerf.cpp" />
+    <ClCompile Include="UnmanagedRessources.cpp" />
+    <ClCompile Include="ViewportManager.cpp" />
+    <ClCompile Include="VirtualShader.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Arrow.h" />
+    <ClInclude Include="BoundingBox.h" />
+    <ClInclude Include="BspFile.h" />
+    <ClInclude Include="Buffers.h" />
+    <ClInclude Include="Clock.h" />
+    <ClInclude Include="Container.h" />
+    <ClInclude Include="Cube.h" />
+    <ClInclude Include="Dictionnary.h" />
+    <ClInclude Include="Entity.h" />
+    <ClInclude Include="Entity.hpp" />
+    <ClInclude Include="EntityManager.h" />
+    <ClInclude Include="FBX_Animator.h" />
+    <ClInclude Include="FBX_Manager.h" />
+    <ClInclude Include="FBX_Material.h" />
+    <ClInclude Include="FBX_Mesh.h" />
+    <ClInclude Include="FBX_Model.h" />
+    <ClInclude Include="Field.h" />
+    <ClInclude Include="FpsCam.h" />
+    <ClInclude Include="FreeCamera.h" />
+    <ClInclude Include="GameTimer.h" />
+    <ClInclude Include="Graphic.h" />
+    <ClInclude Include="Grid.h" />
+    <ClInclude Include="Input.h" />
+    <ClInclude Include="Light.h" />
+    <ClInclude Include="Linelist.h" />
+    <ClInclude Include="Log.hpp" />
+    <ClInclude Include="LuaEntity.h" />
+    <ClInclude Include="LuaInput.h" />
+    <ClInclude Include="LuaScript.h" />
+    <ClInclude Include="main.h" />
+    <ClInclude Include="Model.h" />
+    <ClInclude Include="MovementController.h" />
+    <ClInclude Include="NvDataProvider.h" />
+    <ClInclude Include="NvPmApi.h" />
+    <ClInclude Include="NvPmApi.InterfaceManager.Win.h" />
+    <ClInclude Include="NvPmApi.Manager.h" />
+    <ClInclude Include="Overlay.h" />
+    <ClInclude Include="RayCaster.h" />
+    <ClInclude Include="Renderer.h" />
+    <ClInclude Include="ShaderManager.h" />
+    <ClInclude Include="Sphere.h" />
+    <ClInclude Include="SystemClass.h" />
+    <ClInclude Include="Texture.h" />
+    <ClInclude Include="TextureShader.h" />
+    <ClInclude Include="trace.h" />
+    <ClInclude Include="UnmanagedEntity.h" />
+    <ClInclude Include="UnmanagedLog.h" />
+    <ClInclude Include="UnmanagedMaterial.h" />
+    <ClInclude Include="UnmanagedPerf.h" />
+    <ClInclude Include="UnmanagedRessources.h" />
+    <ClInclude Include="VertexType.h" />
+    <ClInclude Include="ViewportManager.h" />
+    <ClInclude Include="VirtualShader.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Log.inl">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </None>
+    <None Include="texture.ps" />
+    <None Include="texture.vs" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

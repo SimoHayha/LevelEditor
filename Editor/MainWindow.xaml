@@ -1,0 +1,825 @@
+﻿<Controls:MetroWindow x:Class="Editor.MainWindow"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                      xmlns:avalonDock="http://schemas.xceed.com/wpf/xaml/avalondock"
+                      xmlns:Model="clr-namespace:Editor.ModelView"
+		              xmlns:Editor="clr-namespace:Editor"
+                      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+                      Title="Editor" Height="918" Width="1200"
+		              WindowState="Maximized">
+    <Window.Resources>
+        <ResourceDictionary>
+            <avalonDock:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+            <Editor:RadianToDegreeConvertor x:Key="converter" />
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Colours.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Blue.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml" />
+                <ResourceDictionary Source="WatermarkResource.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Window.InputBindings>
+        <KeyBinding Key="G" Modifiers="Control+Alt" Command="{Binding MenuAddCommand}" CommandParameter="2"/>
+        <KeyBinding Key="M" Modifiers="Control+Alt" Command="{Binding MenuAddCommand}" CommandParameter="0"/>
+        <KeyBinding Key="L" Modifiers="Control+Alt" Command="{Binding MenuAddCommand}" CommandParameter="3"/>
+        <KeyBinding Key="C" Modifiers="Control+Alt" Command="{Binding MenuAddCommand}" CommandParameter="4"/>
+        <KeyBinding Key="S" Modifiers="Control+Alt" Command="{Binding MenuAddCommand}" CommandParameter="5"/>
+        <KeyBinding Key="A" Modifiers="Control+Alt" Command="{Binding MenuAddCommand}" CommandParameter="6"/>
+        <KeyBinding Key="F" Modifiers="Control+Alt" Command="{Binding MenuAddCommand}" CommandParameter="7"/>
+        <KeyBinding Key="A" Modifiers="Control+Shift" Command="{Binding MenuAddViewportCommand}"/>
+        <KeyBinding Key="R" Modifiers="Control+Shift" Command="{Binding MenuRemoveViewportCommand}"/>
+        <KeyBinding Key="O" Modifiers="Control" Command="{Binding MenuOpenCommand}"/>
+        <KeyBinding Key="S" Modifiers="Control" Command="{Binding MenuSaveCommand}"/>
+        <KeyBinding Key="N" Modifiers="Control" Command="{Binding MenuNewCommand}"/>
+        <KeyBinding Key="Delete" Command="{Binding KeyDeleteCommand}"/>
+    </Window.InputBindings>
+
+    <!-- Main grid-->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <!-- Menu toolbar -->
+            <RowDefinition />
+            <!-- Editor       -->
+        </Grid.RowDefinitions>
+
+        <!-- Menu toolbar -->
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <Menu IsMainMenu="True" Background="LightGreen">
+                    <MenuItem Header="_File">
+                        <MenuItem Header="_New" Command="{Binding MenuNewCommand}"  InputGestureText="Ctrl+N"/>
+                        <MenuItem Header="_Open" Command="{Binding MenuOpenCommand}" InputGestureText="Ctrl+O"/>
+                        <MenuItem Header="_Save" Command="{Binding MenuSaveCommand}" InputGestureText="Ctrl+S"/>
+                        <MenuItem Header="_Exit" Command="{Binding MenuExitCommand}" InputGestureText="Alt+F4"/>
+                    </MenuItem>
+                    <MenuItem Header="_Add">
+                        <MenuItem Header="Add _Grid" Command="{Binding MenuAddCommand}" CommandParameter="2" InputGestureText="Ctrl+Alt+G"/>
+                        <MenuItem Header="Add _Model" Command="{Binding MenuAddCommand}" CommandParameter="0" InputGestureText="Ctrl+Alt+M"/>
+                        <MenuItem Header="Add _Light" Command="{Binding MenuAddCommand}" CommandParameter="3" InputGestureText="Ctrl+Alt+L"/>
+                        <MenuItem Header="Add _Sphere" Command="{Binding MenuAddCommand}" CommandParameter="5" InputGestureText="Ctrl+Alt+S"/>
+                        <MenuItem Header="Add _Cube" Command="{Binding MenuAddCommand}" CommandParameter="4" InputGestureText="Ctrl+Alt+C"/>
+                        <MenuItem Header="Add C_amera" Command="{Binding MenuAddCommand}" CommandParameter="6" InputGestureText="Ctrl+Alt+A"/>
+                        <MenuItem Header="Add _Field" Command="{Binding MenuAddCommand}" CommandParameter="7" InputGestureText="Ctrl+Alt+F"/>
+                        <MenuItem Header="Add Con_tainer" Command="{Binding MenuAddCommand}" CommandParameter="10" />
+                    </MenuItem>
+                    <MenuItem Header="_Viewports">
+                        <MenuItem Header="_Add Viewport" Command="{Binding MenuAddViewportCommand}" InputGestureText="Ctrl+Shift+A"/>
+                        <MenuItem Header="_Remove last Viewport" Command="{Binding MenuRemoveViewportCommand}" InputGestureText="Ctrl+Shift+R"/>
+                    </MenuItem>
+                    <MenuItem Header="_Window">
+                        <CheckBox Content="Auto_load" IsChecked="{Binding Autoload}" />
+                        <MenuItem Header="_Entity" IsChecked="{Binding TreeViewModel.IsVisible, Mode=TwoWay}" IsCheckable="True"/>
+                        <MenuItem Header="_Property" IsChecked="{Binding PropertyViewModel.IsVisible, Mode=TwoWay}" IsCheckable="True"/>
+                        <MenuItem Header="_Animation" IsChecked="{Binding AnimationViewModel.IsVisible, Mode=TwoWay}" IsCheckable="True"/>
+                        <MenuItem Header="_Debug console" IsChecked="{Binding ConsoleViewModel.IsVisible, Mode=TwoWay}" IsCheckable="True"/>
+                        <MenuItem Header="_Materials"  IsChecked="{Binding MaterialViewModel.IsVisible, Mode=TwoWay}" IsCheckable="True"/>
+                        <MenuItem Header="_Textures" IsChecked="{Binding TextureViewModel.IsVisible, Mode=TwoWay}" IsCheckable="True"/>
+                        <MenuItem Header="_Script" IsChecked="{Binding ScriptViewModel.IsVisible, Mode=TwoWay}" IsCheckable="True"/>
+                        <MenuItem Header="_ViewPort" IsChecked="{Binding ViewPortViewModel.IsVisible, Mode=TwoWay}" IsCheckable="True"/>
+                    </MenuItem>
+                    <MenuItem Header="BSP File">
+                        <MenuItem Header="Load BSP" Command="{Binding MenuLoadVMFCommand}" />
+                    </MenuItem>
+                </Menu>
+            </Grid>
+            <Grid Grid.Column="1">
+                <avalonDock:DockingManager Background="LightGray">
+                    <avalonDock:LayoutRoot>
+                        <avalonDock:LayoutPanel>
+                            <avalonDock:LayoutAnchorablePane>
+                                <avalonDock:LayoutAnchorable Title="Options" CanClose="False" CanHide="False">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button Content="Move" Command="{Binding ObjectActionCommand}" CommandParameter="Move" />
+                                        <Button Content="Rotate" Command="{Binding ObjectActionCommand}" CommandParameter="Rotate" />
+                                        <Button Content="Scale" Command="{Binding ObjectActionCommand}" CommandParameter="Scale" />
+                                    </StackPanel>
+                                </avalonDock:LayoutAnchorable>
+                            </avalonDock:LayoutAnchorablePane>
+                        </avalonDock:LayoutPanel>
+                    </avalonDock:LayoutRoot>
+                </avalonDock:DockingManager>
+            </Grid>
+        </Grid>
+
+        <!-- Editor -->
+        <Grid Grid.Row="1">
+            <avalonDock:DockingManager x:Name="dockManager"
+                                       AnchorablesSource="{Binding Tools}">
+                <avalonDock:DockingManager.LayoutItemTemplateSelector>
+                    <Model:PanesTemplateSelector>
+                        <Model:PanesTemplateSelector.TreeViewTemplate>
+                            <DataTemplate>
+                                <ScrollViewer>
+                                    <TreeView x:Name="list" Background="Silver" ItemsSource="{Binding Entities}" AllowDrop="True">
+                                        <TreeView.ItemTemplate>
+                                            <HierarchicalDataTemplate ItemsSource="{Binding Path=Childs}">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="{Binding Name}" VerticalAlignment="Center"/>
+                                                </StackPanel>
+                                            </HierarchicalDataTemplate>
+                                        </TreeView.ItemTemplate>
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="SelectedItemChanged">
+                                                <i:InvokeCommandAction Command="{Binding TreeViewSelectedItemChangedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type TreeView}}}"/>
+                                            </i:EventTrigger>
+                                            <i:EventTrigger EventName="MouseLeftButtonDown">
+                                                <i:InvokeCommandAction Command="{Binding TreeViewClickCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type TreeView}}}"/>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                        <i:Interaction.Behaviors>
+                                            <Model:FrameworkElementDragBehavior />
+                                        </i:Interaction.Behaviors>
+                                        <TreeView.ItemContainerStyle>
+                                            <Style TargetType="{x:Type TreeViewItem}">
+                                                <Setter Property="IsSelected" Value="{Binding Selected, Mode=TwoWay}" />
+                                                <Setter Property="IsExpanded" Value="True" />
+                                            </Style>
+                                        </TreeView.ItemContainerStyle>
+                                    </TreeView>
+                                </ScrollViewer>
+                            </DataTemplate>
+                        </Model:PanesTemplateSelector.TreeViewTemplate>
+
+                        <Model:PanesTemplateSelector.PropertyViewTemplate>
+                            <DataTemplate>
+                                <ScrollViewer>
+                                    <StackPanel>
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition />
+                                                <RowDefinition />
+                                                <RowDefinition />
+                                                <RowDefinition />
+                                                <RowDefinition />
+                                                <RowDefinition />
+                                            </Grid.RowDefinitions>
+
+                                            <!-- Name -->
+                                            <Grid Grid.Row="0">
+                                                <TextBox Text="{Binding SelectedEntity.Name}" Tag="No entity selected" Style="{StaticResource WatermarkedTextBox}" IsEnabled="{Binding Active}" />
+                                            </Grid>
+                                            
+                                            <!-- Transformation -->
+                                            <Grid Grid.Row="1">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition />
+                                                    <RowDefinition />
+                                                </Grid.RowDefinitions>
+
+                                                <Grid Grid.Row="0">
+                                                    <Label Content="Transformations" HorizontalContentAlignment="Center" />
+                                                </Grid>
+                                                <Grid Grid.Row="1">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="auto" />
+                                                        <ColumnDefinition />
+                                                        <ColumnDefinition Width="auto" />
+                                                        <ColumnDefinition />
+                                                        <ColumnDefinition Width="auto" />
+                                                        <ColumnDefinition />
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <Label Grid.Column="0" Content="X :" />
+                                                    <TextBox Grid.Column="1" Text="{Binding SelectedEntity.TransX, UpdateSourceTrigger=PropertyChanged, StringFormat=N2}" Tag="value" Style="{StaticResource WatermarkedTextBox}" IsEnabled="{Binding Active}" />
+                                                    <Label Grid.Column="2" Content="Y :" />
+                                                    <TextBox Grid.Column="3" Text="{Binding SelectedEntity.TransY, UpdateSourceTrigger=PropertyChanged, StringFormat=N2}" Tag="value" Style="{StaticResource WatermarkedTextBox}" IsEnabled="{Binding Active}" />
+                                                    <Label Grid.Column="4" Content="Z :" />
+                                                    <TextBox Grid.Column="5" Text="{Binding SelectedEntity.TransZ, UpdateSourceTrigger=PropertyChanged, StringFormat=N2}" Tag="value" Style="{StaticResource WatermarkedTextBox}" IsEnabled="{Binding Active}" />
+                                                </Grid>
+                                            </Grid>
+
+                                            <!-- Rotation -->
+                                            <Grid Grid.Row="2">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition />
+                                                    <RowDefinition />
+                                                    <RowDefinition />
+                                                    <RowDefinition />
+                                                    <RowDefinition />
+                                                </Grid.RowDefinitions>
+
+                                                <Grid Grid.Row="0">
+                                                    <Label Content="Rotation" HorizontalContentAlignment="Center" />
+                                                </Grid>
+                                                <Grid Grid.Row="1">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="auto"/>
+                                                        <ColumnDefinition />
+                                                        <ColumnDefinition Width="2*" />
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <Label Grid.Column="0" Content="X :" />
+                                                    <TextBox Grid.Column="1" Text="{Binding SelectedEntity.RotX, Converter={StaticResource converter}, UpdateSourceTrigger=PropertyChanged, StringFormat=N2}" Tag="value" Style="{StaticResource WatermarkedTextBox}" IsEnabled="{Binding Active}" />
+                                                    <Slider Grid.Column="2" Margin="5,0,0,0" Value="{Binding SelectedEntity.RotX, Converter={StaticResource converter}}" Minimum="0" Maximum="360" TickFrequency="1" IsSnapToTickEnabled="True" IsEnabled="{Binding Active}" />
+                                                </Grid>
+                                                <Grid Grid.Row="2">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="auto" />
+                                                        <ColumnDefinition />
+                                                        <ColumnDefinition Width="2*" />
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <Label Grid.Column="0" Content="Y :" />
+                                                    <TextBox Grid.Column="1" Text="{Binding SelectedEntity.RotY, Converter={StaticResource converter}, UpdateSourceTrigger=PropertyChanged, StringFormat=N2}" Tag="value" Style="{StaticResource WatermarkedTextBox}" IsEnabled="{Binding Active}" />
+                                                    <Slider Grid.Column="2" Margin="5,0,0,0" Value="{Binding SelectedEntity.RotY, Converter={StaticResource converter}}" Minimum="0" Maximum="360" TickFrequency="1" IsSnapToTickEnabled="True" IsEnabled="{Binding Active}" />
+                                                </Grid>
+                                                <Grid Grid.Row="3">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="auto" />
+                                                        <ColumnDefinition />
+                                                        <ColumnDefinition Width="2*" />
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <Label Grid.Column="0" Content="Z :" />
+                                                    <TextBox Grid.Column="1" Text="{Binding SelectedEntity.RotZ, Converter={StaticResource converter}, UpdateSourceTrigger=PropertyChanged, StringFormat=N2}" Tag="value" Style="{StaticResource WatermarkedTextBox}" IsEnabled="{Binding Active}" />
+                                                    <Slider Grid.Column="2" Margin="5,0,0,0" Value="{Binding SelectedEntity.RotZ, Converter={StaticResource converter}}" Minimum="0" Maximum="360" TickFrequency="1" IsSnapToTickEnabled="True" IsEnabled="{Binding Active}" />
+                                                </Grid>
+                                            </Grid>
+
+                                            <!-- Scale -->
+                                            <Grid Grid.Row="3">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition />
+                                                    <RowDefinition />
+                                                </Grid.RowDefinitions>
+
+                                                <Grid Grid.Row="0">
+                                                    <Label Content="Scale" HorizontalContentAlignment="Center" />
+                                                </Grid>
+                                                <Grid Grid.Row="1">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="auto" />
+                                                        <ColumnDefinition />
+                                                        <ColumnDefinition Width="auto" />
+                                                        <ColumnDefinition />
+                                                        <ColumnDefinition Width="auto" />
+                                                        <ColumnDefinition />
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <Label Grid.Column="0" Content="X :" />
+                                                    <TextBox Grid.Column="1" Text="{Binding SelectedEntity.ScaleX, UpdateSourceTrigger=PropertyChanged, StringFormat=N2}" Tag="value" Style="{StaticResource WatermarkedTextBox}" IsEnabled="{Binding Active}" />
+                                                    <Label Grid.Column="2" Content="Y :" />
+                                                    <TextBox Grid.Column="3" Text="{Binding SelectedEntity.ScaleY, UpdateSourceTrigger=PropertyChanged, StringFormat=N2}" Tag="value" Style="{StaticResource WatermarkedTextBox}" IsEnabled="{Binding Active}" />
+                                                    <Label Grid.Column="4" Content="Z :" />
+                                                    <TextBox Grid.Column="5" Text="{Binding SelectedEntity.ScaleZ, UpdateSourceTrigger=PropertyChanged, StringFormat=N2}" Tag="value" Style="{StaticResource WatermarkedTextBox}" IsEnabled="{Binding Active}" />
+                                                </Grid>
+                                            </Grid>
+
+                                            
+                                            <!-- Script -->
+                                            <Grid Grid.Row="4">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition />
+                                                    <RowDefinition />
+                                                    <RowDefinition />
+                                                </Grid.RowDefinitions>
+
+                                                <Grid Grid.Row="0">
+                                                    <Label Content="Script" HorizontalContentAlignment="Center" />
+                                                </Grid>
+                                                <Grid Grid.Row="1">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*" />
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <ComboBox Grid.Column="0" ItemsSource="{Binding Ressources.Scripts}" SelectedItem="{Binding SelectedEntity.ScriptName}" IsEnabled="{Binding Active}" />
+                                                </Grid>
+                                                <Grid Grid.Row="2">
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition />
+                                                            <ColumnDefinition />
+                                                        </Grid.ColumnDefinitions>
+
+                                                        <Button Grid.Column="0" Content="Play" Command="{Binding ScriptActionCommand}" CommandParameter="Play" IsEnabled="{Binding Active}" />
+                                                        <Button Grid.Column="1" Content="Pause" Command="{Binding ScriptActionCommand}" CommandParameter="Pause" IsEnabled="{Binding Active}" />
+                                                    </Grid>
+                                                </Grid>
+                                            </Grid>
+                                            
+                                            <!-- Camera -->
+                                            <Grid Grid.Row="5">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition />
+                                                </Grid.RowDefinitions>
+                                                
+                                                <Grid Grid.Row="0">
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition />
+                                                        </Grid.ColumnDefinitions>
+
+                                                        <ComboBox Grid.Column="0" x:Name="ViewportChooser" IsEnabled="{Binding Active}">
+                                                            <ComboBoxItem>Viewport 1</ComboBoxItem>
+                                                            <ComboBoxItem>Viewport 2</ComboBoxItem>
+                                                            <ComboBoxItem>Viewport 3</ComboBoxItem>
+                                                            <ComboBoxItem>Viewport 4</ComboBoxItem>
+
+                                                            <i:Interaction.Triggers>
+                                                                <i:EventTrigger EventName="SelectionChanged">
+                                                                    <i:InvokeCommandAction Command="{Binding ViewportSelectionCommand}" CommandParameter="{Binding SelectedIndex, ElementName=ViewportChooser}"/>
+                                                                </i:EventTrigger>
+                                                            </i:Interaction.Triggers>
+                                                        </ComboBox>
+                                                    </Grid>
+                                                </Grid>
+                                            </Grid>
+                                            
+                                        </Grid>
+                                    </StackPanel>
+                                </ScrollViewer>
+                            </DataTemplate>
+                        </Model:PanesTemplateSelector.PropertyViewTemplate>
+
+                        <Model:PanesTemplateSelector.AnimationViewTemplate>
+                            <DataTemplate>
+                                <ScrollViewer>
+                                    <StackPanel>
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition />
+                                                <RowDefinition />
+                                                <RowDefinition />
+                                                <RowDefinition />
+                                                <RowDefinition />
+                                                <RowDefinition />
+                                                <RowDefinition />
+                                                <RowDefinition />
+                                            </Grid.RowDefinitions>
+                                            
+                                            <Grid Grid.Row="0">
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition />
+                                                    </Grid.ColumnDefinitions>
+                                                    
+                                                    <Label Grid.Column="0" Content="{Binding ErrMsg}" Foreground="Red" />
+                                                </Grid>
+                                            </Grid>
+                                            
+                                            <Grid Grid.Row="1">
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="auto" />
+                                                        <ColumnDefinition />
+                                                    </Grid.ColumnDefinitions>
+                                                    
+                                                    <Label Grid.Column="0" Content="Animations" />
+                                                    <ComboBox x:Name="AnimChooser" Grid.Column="1" ItemsSource="{Binding SelectedEntity.AnimationNames}" IsEnabled="{Binding Active}">
+                                                        <i:Interaction.Triggers>
+                                                            <i:EventTrigger EventName="SelectionChanged">
+                                                                <i:InvokeCommandAction Command="{Binding AnimationChangedCommand}" CommandParameter="{Binding SelectedIndex, ElementName=AnimChooser}"/>
+                                                            </i:EventTrigger>
+                                                        </i:Interaction.Triggers>
+                                                    </ComboBox>
+                                                </Grid>
+                                            </Grid>
+                                            
+                                            <Grid Grid.Row="2" Margin="0,5,0,5">
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition />
+                                                        <ColumnDefinition />
+                                                        <ColumnDefinition />
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <Button Grid.Column="0" Content="Restart" Margin="5,5,5,5" IsEnabled="{Binding Active}" Command="{Binding AnimationActionCommand}" CommandParameter="Restart" />
+                                                    <Button Grid.Column="1" Content="Play" Margin="5,5,5,5" IsEnabled="{Binding Active}" Command="{Binding AnimationActionCommand}" CommandParameter="Play" />
+                                                    <Button Grid.Column="2" Content="Pause" Margin="5,5,5,5" IsEnabled="{Binding Active}" Command="{Binding AnimationActionCommand}" CommandParameter="Pause" />
+                                                </Grid>
+                                            </Grid>
+                                            
+                                            <Grid Grid.Row="3">
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition />
+                                                        <ColumnDefinition Width="auto" />
+                                                        <ColumnDefinition />
+                                                    </Grid.ColumnDefinitions>
+                                                    
+                                                    <TextBox Grid.Column="0" Text="{Binding SelectedEntity.CurrentTime}" IsEnabled="{Binding Active}" />
+                                                    <Label Grid.Column="1" Content="/" />
+                                                    <TextBox Grid.Column="2" Text="{Binding SelectedEntity.TotalTime}" IsEnabled="False" />
+                                                </Grid>
+                                            </Grid>
+                                            
+                                            <Grid Grid.Row="4">
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition />
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <Slider Grid.Column="0" Minimum="0" Maximum="{Binding SelectedEntity.TotalTime}" Value="{Binding SelectedEntity.CurrentTime}" IsEnabled="{Binding Active}" />
+                                                </Grid>
+                                            </Grid>
+
+                                            <Grid Grid.Row="5" Margin="0,5,0,5">
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition />
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <CheckBox Grid.Column="0" Content="Loop when animation end" IsChecked="{Binding SelectedEntity.Loop}" IsEnabled="{Binding Active}" />
+                                                </Grid>
+                                            </Grid>
+                                            
+                                            <Grid Grid.Row="6" Margin="0,5,0,5">
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition />
+                                                    </Grid.ColumnDefinitions>
+                                                    
+                                                    <CheckBox Grid.Column="1" Content="Move to next animation on end" IsChecked="{Binding SelectedEntity.MoveNextOnEnd}" IsEnabled="{Binding Active}" />
+                                                </Grid>
+                                            </Grid>
+                                            
+                                            <Grid Grid.Row="7" Margin="0,5,0,5">
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="auto" />
+                                                        <ColumnDefinition />
+                                                        <ColumnDefinition Width="3*" />
+                                                    </Grid.ColumnDefinitions>
+                                                    
+                                                    <Label Grid.Column="0" Content="Speed" />
+                                                    <TextBox Grid.Column="1" Margin="5,0,5,0" Text="{Binding SelectedEntity.AnimationSpeed}" IsEnabled="{Binding Active}" />
+                                                    <Slider Grid.Column="2" TickFrequency="0.1" IsSnapToTickEnabled="True" Minimum="0.1" Maximum="10" Value="{Binding SelectedEntity.AnimationSpeed}" IsEnabled="{Binding Active}" />
+                                                </Grid>
+                                            </Grid>
+                                        </Grid>
+                                        <!--<Label Content="{Binding ErrMsg}" Foreground="Red" />
+                                        <Label Content="Active ?" />
+                                        <CheckBox IsChecked="{Binding SelectedEntity.Animate}" IsEnabled="{Binding Active}" />
+                                        <Label Content="Animation" />
+                                        <ComboBox ItemsSource="{Binding SelectedEntity.AnimationNames}" IsEnabled="{Binding Active}">
+                                            <i:Interaction.Triggers>
+                                                <i:EventTrigger EventName="SelectionChanged">
+                                                    <i:InvokeCommandAction Command="{Binding AnimationChangedCommand}" CommandParameter="{Binding SelectedIndex, ElementName=comboBox}"/>
+                                                </i:EventTrigger>
+                                            </i:Interaction.Triggers>
+                                        </ComboBox>-->
+                                        <!--<Label Content="Animation" />
+                                        <TextBox Text="{Binding SelectedEntity.CurrentAnimation}" IsEnabled="{Binding Active}" />
+                                        <Label Content="TotalTime" />
+                                        <TextBox Text="{Binding SelectedEntity.TotalTime}" IsEnabled="{Binding Active}" />
+                                        <Label Content="Current time" />
+                                        <Slider Minimum="0" Maximum="{Binding SelectedEntity.TotalTime}" Value="{Binding SelectedEntity.CurrentTime}" IsEnabled="{Binding Active}" />-->
+                                    </StackPanel>
+                                </ScrollViewer>
+                            </DataTemplate>
+                        </Model:PanesTemplateSelector.AnimationViewTemplate>
+
+                        <Model:PanesTemplateSelector.ConsoleViewTemplate>
+                            <DataTemplate>
+                                <ScrollViewer CanContentScroll="True">
+                                    <TextBlock Text="{Binding Console.Text}" HorizontalAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="auto" Background="Black" Foreground="LightGreen" />
+                                </ScrollViewer>
+                            </DataTemplate>
+                        </Model:PanesTemplateSelector.ConsoleViewTemplate>
+
+                        <Model:PanesTemplateSelector.PerfViewTemplate>
+                            <DataTemplate>
+                                <ScrollViewer>
+                                    <StackPanel>
+                                        <Label Content="Nb Primitives" />
+                                        <TextBlock Text="{Binding Perf.Primitives}" />
+                                        <Label Content="GPU Idle" />
+                                        <TextBlock Text="{Binding Perf.GpuUsage}" />
+                                    </StackPanel>
+                                </ScrollViewer>
+                            </DataTemplate>
+                        </Model:PanesTemplateSelector.PerfViewTemplate>
+
+						<Model:PanesTemplateSelector.MaterialViewTemplate>
+							<DataTemplate>
+								<ScrollViewer>
+									<StackPanel>
+										<Grid>
+											<Grid.RowDefinitions>
+												<RowDefinition Height="*" />
+												<RowDefinition Height="2*" />
+											</Grid.RowDefinitions>
+											<ListBox x:Name="listMaterials" Grid.Row="0" ItemsSource="{Binding SelectedEntity.Materials}">
+												<ListBox.ItemTemplate>
+													<DataTemplate>
+														<TextBlock Text="{Binding Name}"/>
+													</DataTemplate>
+												</ListBox.ItemTemplate>
+											</ListBox>
+											<Grid Grid.Row="1">
+												<Grid.RowDefinitions>
+													<RowDefinition Height="*" />
+													<RowDefinition Height="*" />
+													<RowDefinition Height="*" />
+													<RowDefinition Height="*" />
+													<RowDefinition Height="*" />
+													<RowDefinition Height="*" />
+													<RowDefinition Height="*" />
+												</Grid.RowDefinitions>
+												<Grid.ColumnDefinitions>
+													<ColumnDefinition Width="2*"/>
+													<ColumnDefinition Width="20"/>
+													<ColumnDefinition Width="*"/>
+													<ColumnDefinition Width="20"/>
+													<ColumnDefinition Width="*"/>
+													<ColumnDefinition Width="20"/>
+													<ColumnDefinition Width="*"/>
+												</Grid.ColumnDefinitions>
+												<Label Grid.Row="0" Content="Emissive "/>
+												<Label Grid.Row="0" Grid.Column="1" Content="R"/>
+                                                <TextBox Grid.Row="0" Grid.Column="2" Text="{Binding SelectedItem.EmmisiveX, ElementName=listMaterials, UpdateSourceTrigger=PropertyChanged}"/>
+												<Label Grid.Row="0" Grid.Column="3" Content="G"/>
+                                                <TextBox Grid.Row="0" Grid.Column="4" Text="{Binding SelectedItem.EmmisiveY, ElementName=listMaterials, UpdateSourceTrigger=PropertyChanged}"/>
+												<Label Grid.Row="0" Grid.Column="5" Content="B"/>
+                                                <TextBox Grid.Row="0" Grid.Column="6" Text="{Binding SelectedItem.EmmisiveZ, ElementName=listMaterials, UpdateSourceTrigger=PropertyChanged}"/>
+												<Label Grid.Row="1" Content="Ambient "/>
+												<Label Grid.Row="1" Grid.Column="1" Content="R"/>
+                                                <TextBox Grid.Row="1" Grid.Column="2" Text="{Binding SelectedItem.AmbientX, ElementName=listMaterials, UpdateSourceTrigger=PropertyChanged}"/>
+												<Label Grid.Row="1" Grid.Column="3" Content="G"/>
+                                                <TextBox Grid.Row="1" Grid.Column="4" Text="{Binding SelectedItem.AmbientY, ElementName=listMaterials, UpdateSourceTrigger=PropertyChanged}"/>
+												<Label Grid.Row="1" Grid.Column="5" Content="B"/>
+                                                <TextBox Grid.Row="1" Grid.Column="6" Text="{Binding SelectedItem.AmbientZ, ElementName=listMaterials, UpdateSourceTrigger=PropertyChanged}"/>
+												<Label Grid.Row="2" Content="Diffuse "/>
+												<Label Grid.Row="2" Grid.Column="1" Content="R"/>
+                                                <TextBox Grid.Row="2" Grid.Column="2" Text="{Binding SelectedItem.DiffuseX, ElementName=listMaterials, UpdateSourceTrigger=PropertyChanged}"/>
+												<Label Grid.Row="2" Grid.Column="3" Content="G"/>
+                                                <TextBox Grid.Row="2" Grid.Column="4" Text="{Binding SelectedItem.DiffuseY, ElementName=listMaterials, UpdateSourceTrigger=PropertyChanged}"/>
+												<Label Grid.Row="2" Grid.Column="5" Content="B"/>
+                                                <TextBox Grid.Row="2" Grid.Column="6" Text="{Binding SelectedItem.DiffuseZ, ElementName=listMaterials, UpdateSourceTrigger=PropertyChanged}"/>
+												<Label Grid.Row="3" Content="Specular "/>
+												<Label Grid.Row="3" Grid.Column="1" Content="R"/>
+                                                <TextBox Grid.Row="3" Grid.Column="2" Text="{Binding SelectedItem.SpecularX, ElementName=listMaterials, UpdateSourceTrigger=PropertyChanged}"/>
+												<Label Grid.Row="3" Grid.Column="3" Content="G"/>
+                                                <TextBox Grid.Row="3" Grid.Column="4" Text="{Binding SelectedItem.SpecularY, ElementName=listMaterials, UpdateSourceTrigger=PropertyChanged}"/>
+												<Label Grid.Row="3" Grid.Column="5" Content="B"/>
+                                                <TextBox Grid.Row="3" Grid.Column="6" Text="{Binding SelectedItem.SpecularZ, ElementName=listMaterials, UpdateSourceTrigger=PropertyChanged}"/>
+												<Label Grid.Row="4" Content="Shinness "/>
+                                                <TextBox Grid.Row="4" Grid.Column="2" Text="{Binding SelectedItem.Shinness, ElementName=listMaterials, UpdateSourceTrigger=PropertyChanged}"/>
+												<Label Grid.Row="5" Content="Color "/>
+												<Label Grid.Row="5" Grid.Column="1" Content="R"/>
+                                                <TextBox Grid.Row="5" Grid.Column="2" Text="{Binding SelectedItem.ColorX, ElementName=listMaterials, UpdateSourceTrigger=PropertyChanged}"/>
+												<Label Grid.Row="5" Grid.Column="3" Content="G"/>
+                                                <TextBox Grid.Row="5" Grid.Column="4" Text="{Binding SelectedItem.ColorY, ElementName=listMaterials, UpdateSourceTrigger=PropertyChanged}"/>
+												<Label Grid.Row="5" Grid.Column="5" Content="B"/>
+                                                <TextBox Grid.Row="5" Grid.Column="6" Text="{Binding SelectedItem.ColorZ, ElementName=listMaterials, UpdateSourceTrigger=PropertyChanged}"/>
+												<Label Grid.Row="6" Content="Texture "/>
+												<ComboBox Grid.Row="6" Grid.Column="2" ItemsSource="{Binding Ressources.Textures}" SelectedItem="{Binding SelectedItem.TextureName, ElementName=listMaterials}"/>
+											</Grid>
+										</Grid>
+									</StackPanel>
+								</ScrollViewer>
+							</DataTemplate>
+						</Model:PanesTemplateSelector.MaterialViewTemplate>
+						
+						<Model:PanesTemplateSelector.TextureViewTemplate>
+							<DataTemplate>
+								<ScrollViewer>
+									<StackPanel>
+										<Grid>
+											<Grid.RowDefinitions>
+												<RowDefinition Height="*"/>
+												<RowDefinition Height="2*"/>
+												<RowDefinition Height="auto"/>
+											</Grid.RowDefinitions>
+											<ListBox x:Name="listTextures" Grid.Row="0" ItemsSource="{Binding Ressources.Textures}">
+												<ListBox.ItemTemplate>
+													<DataTemplate>
+														<TextBlock Text="{Binding}"/>
+													</DataTemplate>
+												</ListBox.ItemTemplate>
+											</ListBox>
+											<Image Grid.Row="1" Source="{Binding SelectedItem, ElementName=listTextures}"/>
+											<Button Grid.Row="2" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center">
+												Add Texture
+												<i:Interaction.Triggers>
+													<i:EventTrigger EventName="Click">
+														<i:InvokeCommandAction Command="{Binding AddButtonClickCommand}"/>
+													</i:EventTrigger>
+												</i:Interaction.Triggers>
+											</Button>
+										</Grid>
+									</StackPanel>
+								</ScrollViewer>
+							</DataTemplate>
+						</Model:PanesTemplateSelector.TextureViewTemplate>
+						<Model:PanesTemplateSelector.ScriptViewTemplate>
+							<DataTemplate>
+								<ScrollViewer>
+									<StackPanel>
+										<Grid>
+											<Grid.ColumnDefinitions>
+												<ColumnDefinition Width="*" />
+												<ColumnDefinition Width="2*" />
+											</Grid.ColumnDefinitions>
+											<Grid.RowDefinitions>
+												<RowDefinition Height="*" />
+												<RowDefinition Height="auto" />
+											</Grid.RowDefinitions>
+											<ListBox x:Name="listScript" Grid.Column="0" Grid.Row="0" ItemsSource="{Binding Ressources.Scripts}">
+												<i:Interaction.Triggers>
+													<i:EventTrigger EventName="SelectionChanged">
+														<i:InvokeCommandAction Command="{Binding SelectionChangedCommand}" CommandParameter="{Binding SelectedItem, ElementName=listScript}"/>
+													</i:EventTrigger>
+												</i:Interaction.Triggers>
+												<ListBox.ItemTemplate>
+													<DataTemplate>
+														<TextBlock Text="{Binding}"/>
+													</DataTemplate>
+												</ListBox.ItemTemplate>
+											</ListBox>
+											<Button Grid.Column="0" Grid.Row="1">
+												Load
+												<i:Interaction.Triggers>
+													<i:EventTrigger EventName="Click">
+														<i:InvokeCommandAction Command="{Binding LoadButtonClickCommand}" CommandParameter="{Binding SelectedItem, ElementName=listScript}"/>
+													</i:EventTrigger>
+												</i:Interaction.Triggers>
+											</Button>
+											<TextBox x:Name="textScript" Grid.Column="1" Grid.Row="0" TextWrapping="Wrap" MinLines="30" MaxLines="30"
+												 AcceptsReturn="True" VerticalScrollBarVisibility="Visible" AcceptsTab="True" Text="{Binding Text}"/>
+											<Button Grid.Column="1" Grid.Row="1">
+												Save
+												<i:Interaction.Triggers>
+													<i:EventTrigger EventName="Click">
+														<i:InvokeCommandAction Command="{Binding SaveButtonClickCommand}" CommandParameter="{Binding SelectedItem, ElementName=listScript}"/>
+													</i:EventTrigger>
+												</i:Interaction.Triggers>
+											</Button>
+										</Grid>
+									</StackPanel>
+								</ScrollViewer>
+							</DataTemplate>
+						</Model:PanesTemplateSelector.ScriptViewTemplate>
+
+						<Model:PanesTemplateSelector.ViewPortViewTemplate>
+							<DataTemplate>
+								<ScrollViewer>
+									<StackPanel>
+										<Grid>
+											<Grid.ColumnDefinitions>
+												<ColumnDefinition Width="auto"/>
+												<ColumnDefinition Width="*"/>
+											</Grid.ColumnDefinitions>
+											<Grid.RowDefinitions>
+												<RowDefinition Height="auto"/>
+												<RowDefinition Height="auto"/>
+												<RowDefinition Height="auto"/>
+												<RowDefinition Height="auto"/>
+												<RowDefinition Height="auto"/>
+												<RowDefinition Height="auto"/>
+												<RowDefinition Height="auto"/>
+												<RowDefinition Height="auto"/>
+											</Grid.RowDefinitions>
+											<Label Grid.Column="0" Grid.Row="0" Content="ViewPort 1 :"/>
+											<Label Grid.Column="0" Grid.Row="2" Content="ViewPort 2 :"/>
+											<Label Grid.Column="0" Grid.Row="4" Content="ViewPort 3 :"/>
+											<Label Grid.Column="0" Grid.Row="6" Content="ViewPort 4 :"/>
+											<Label Grid.Column="0" Grid.Row="1" Content="WireFrame 1 :"/>
+											<Label Grid.Column="0" Grid.Row="3" Content="WireFrame 2 :"/>
+											<Label Grid.Column="0" Grid.Row="5" Content="WireFrame 3 :"/>
+											<Label Grid.Column="0" Grid.Row="7" Content="WireFrame 4 :"/>
+											<ComboBox x:Name="viewport0" Grid.Column="1" Grid.Row="0" ItemsSource="{Binding Cameras}" SelectedIndex="{Binding IndexViewport0, Mode=OneWay}">
+												<ComboBox.ItemTemplate>
+													<DataTemplate>
+														<TextBlock Text="{Binding Name, Mode=OneWay}" />
+													</DataTemplate>
+												</ComboBox.ItemTemplate>
+												<i:Interaction.Triggers>
+													<i:EventTrigger EventName="SelectionChanged">
+														<i:InvokeCommandAction Command="{Binding ViewportSelectionCommand0}"  CommandParameter="{Binding SelectedIndex, ElementName=viewport0}"/>
+													</i:EventTrigger>
+												</i:Interaction.Triggers>
+											</ComboBox>
+											<ComboBox x:Name="viewport1" Grid.Column="1" Grid.Row="2" ItemsSource="{Binding Cameras}" SelectedIndex="{Binding IndexViewport1, Mode=OneWay}">
+												<ComboBox.ItemTemplate>
+													<DataTemplate>
+														<TextBlock Text="{Binding Name, Mode=OneWay}" />
+													</DataTemplate>
+												</ComboBox.ItemTemplate>
+												<i:Interaction.Triggers>
+													<i:EventTrigger EventName="SelectionChanged">
+														<i:InvokeCommandAction Command="{Binding ViewportSelectionCommand1}" CommandParameter="{Binding SelectedIndex, ElementName=viewport1}"/>
+													</i:EventTrigger>
+												</i:Interaction.Triggers>
+											</ComboBox>
+											<ComboBox x:Name="viewport2" Grid.Column="1" Grid.Row="4" ItemsSource="{Binding Cameras}" SelectedIndex="{Binding IndexViewport2, Mode=OneWay}">
+												<ComboBox.ItemTemplate>
+													<DataTemplate>
+														<TextBlock Text="{Binding Name, Mode=OneWay}" />
+													</DataTemplate>
+												</ComboBox.ItemTemplate>
+												<i:Interaction.Triggers>
+													<i:EventTrigger EventName="SelectionChanged">
+														<i:InvokeCommandAction Command="{Binding ViewportSelectionCommand2}" CommandParameter="{Binding SelectedIndex, ElementName=viewport2}"/>
+													</i:EventTrigger>
+												</i:Interaction.Triggers>
+											</ComboBox>
+											<ComboBox x:Name="viewport3" Grid.Column="1" Grid.Row="6" ItemsSource="{Binding Cameras}" SelectedIndex="{Binding IndexViewport3, Mode=OneWay}">
+												<ComboBox.ItemTemplate>
+													<DataTemplate>
+														<TextBlock Text="{Binding Name, Mode=OneWay}" />
+													</DataTemplate>
+												</ComboBox.ItemTemplate>
+												<i:Interaction.Triggers>
+													<i:EventTrigger EventName="SelectionChanged">
+														<i:InvokeCommandAction Command="{Binding ViewportSelectionCommand3}" CommandParameter="{Binding SelectedIndex, ElementName=viewport3}"/>
+													</i:EventTrigger>
+												</i:Interaction.Triggers>
+											</ComboBox>
+                                            <CheckBox Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" IsChecked="{Binding Cam1Wire}" />
+                                            <CheckBox Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" IsChecked="{Binding Cam2Wire}" />
+                                            <CheckBox Grid.Column="1" Grid.Row="5" VerticalAlignment="Center" IsChecked="{Binding Cam3Wire}" />
+                                            <CheckBox Grid.Column="1" Grid.Row="7" VerticalAlignment="Center" IsChecked="{Binding Cam4Wire}" />
+                                        </Grid>
+									</StackPanel>
+								</ScrollViewer>
+							</DataTemplate>
+						</Model:PanesTemplateSelector.ViewPortViewTemplate>
+						
+						<Model:PanesTemplateSelector.ShaderViewTemplate>
+							<DataTemplate>
+								<ScrollViewer>
+									<StackPanel>
+										<Grid>
+											<Grid.RowDefinitions>
+												<RowDefinition Height="*"/>
+												<RowDefinition Height="*"/>
+												<RowDefinition Height="auto"/>
+											</Grid.RowDefinitions>
+											<TextBox Grid.Row="0" TextWrapping="Wrap" MinLines="15" MaxLines="15"
+												 AcceptsReturn="True" VerticalScrollBarVisibility="Visible" AcceptsTab="True" Text="{Binding TextPs}"/>
+                                            <TextBox Grid.Row="1" TextWrapping="Wrap" MinLines="15" MaxLines="15"
+												 AcceptsReturn="True" VerticalScrollBarVisibility="Visible" AcceptsTab="True" Text="{Binding TextVs}"/>
+                                            <Button Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center">
+                                                Reload
+                                                <i:Interaction.Triggers>
+                                                    <i:EventTrigger EventName="Click">
+                                                        <i:InvokeCommandAction Command="{Binding ReloadButtonClickCommand}"/>
+                                                    </i:EventTrigger>
+                                                </i:Interaction.Triggers>
+                                            </Button>
+                                        </Grid>
+                                    </StackPanel>
+                                </ScrollViewer>
+                            </DataTemplate>
+                        </Model:PanesTemplateSelector.ShaderViewTemplate>
+                    </Model:PanesTemplateSelector>
+                </avalonDock:DockingManager.LayoutItemTemplateSelector>
+
+                <avalonDock:DockingManager.LayoutItemContainerStyleSelector>
+                    <Model:PaneStyleSelector>
+                        <Model:PaneStyleSelector.ToolStyle>
+                            <Style TargetType="{x:Type avalonDock:LayoutAnchorableItem}">
+                                <Setter Property="Title" Value="{Binding Model.Title}" />
+                                <Setter Property="Visibility" Value="{Binding Model.IsVisible, Mode=TwoWay, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter={x:Static Visibility.Hidden}}" />
+                                <Setter Property="ContentId" Value="{Binding Model.ContentId}" />
+                                <Setter Property="IsSelected" Value="{Binding Model.IsSelected, Mode=TwoWay}" />
+                                <Setter Property="IsActive" Value="{Binding Model.IsActive, Mode=TwoWay}" />
+                                <Setter Property="Width" Value="{Binding Model.Width, Mode=TwoWay}" />
+                                <Setter Property="Height" Value="{Binding Model.Height, Mode=TwoWay}" />
+                            </Style>
+                        </Model:PaneStyleSelector.ToolStyle>
+                    </Model:PaneStyleSelector>
+                </avalonDock:DockingManager.LayoutItemContainerStyleSelector>
+
+                <avalonDock:DockingManager.LayoutUpdateStrategy>
+                    <Model:LayoutInitializer />
+                </avalonDock:DockingManager.LayoutUpdateStrategy>
+
+                <avalonDock:LayoutRoot>
+                    <avalonDock:LayoutPanel Orientation="Horizontal">
+                        <avalonDock:LayoutAnchorablePaneGroup>
+                            <avalonDock:LayoutAnchorablePane>
+                                <avalonDock:LayoutAnchorable Title="DXView" CanClose="False" CanHide="False">
+                                    <Border Name="ControlHostElement" RenderOptions.ClearTypeHint="Enabled" Background="Silver" Width="auto" SizeChanged="ControlHostElement_SizeChanged"/>
+                                </avalonDock:LayoutAnchorable>
+                            </avalonDock:LayoutAnchorablePane>
+                            <avalonDock:LayoutAnchorablePane Name="ToolsPane">
+                            </avalonDock:LayoutAnchorablePane>
+                        </avalonDock:LayoutAnchorablePaneGroup>
+                        <!--<avalonDock:LayoutAnchorablePaneGroup>
+                            <avalonDock:LayoutAnchorablePane Name="DXView">
+                                <avalonDock:LayoutAnchorable Title="DXView" CanClose="False" CanHide="False">
+                                    <Border Name="ControlHostElement" RenderOptions.ClearTypeHint="Enabled" Background="Silver" Width="auto" SizeChanged="ControlHostElement_SizeChanged"/>
+                                </avalonDock:LayoutAnchorable>
+                            </avalonDock:LayoutAnchorablePane>
+                            <avalonDock:LayoutAnchorablePane Name="ToolsPane">
+                            </avalonDock:LayoutAnchorablePane>
+                        </avalonDock:LayoutAnchorablePaneGroup>-->
+                    </avalonDock:LayoutPanel>
+                </avalonDock:LayoutRoot>
+            </avalonDock:DockingManager>
+        </Grid>
+    </Grid>
+</Controls:MetroWindow>

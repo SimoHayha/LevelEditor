@@ -1,0 +1,82 @@
+Texture2D		shaderTexture;
+SamplerState	SampleType;
+
+cbuffer	materialBuffer
+{
+	float4	colorMat;
+	float4	emmisive;
+	float4	ambient;
+	float4	diffuse;
+	float4	specular;
+	float	shinness;
+	float3	pad;
+};
+
+struct light
+{
+	float4	lightPos;
+	float4	lightColor;
+};
+
+cbuffer	lightBuffer
+{
+	light	Lights[8];
+};
+
+
+struct	PixelInputType
+{
+	float4	position : SV_POSITION;
+	float2	tex : TEXCOORD0;
+	float4	normal : NORMAL;
+	float4	worldPos : TEXCOORD1;
+	float3	viewDirection : TEXCOORD2;
+};
+
+float4	TexturePixelShader(PixelInputType input) : SV_Target
+{
+	float4	textureColor;
+	float	attenuation = 0.000f;
+	float3	toLight;
+    float	lightIntensity;
+    float4	color;
+	float3	normal = input.normal.xyz;
+	float3	reflection;
+	float3	ambientColor = float3(0.0f, 0.0f, 0.0f);
+	float3	diffuseColor;
+	float3	specularColor = float3(0.0f, 0.0f, 0.0f);
+	float	distToLight;
+	float	atten;
+	float4	lightsPos[8];
+
+	if (ambient.a > 0.5f)
+		textureColor = shaderTexture.Sample(SampleType, input.tex);
+	else
+	{
+		textureColor.rgb = colorMat.rgb;
+		textureColor.a = 1.0f;
+	}
+	color.rgb = ambient.rgb * textureColor.rgb;
+	int i = 0;
+	while (i < 8)
+	{
+		diffuseColor = float3(0.0f, 0.0f, 0.0f);
+		lightsPos[i] = Lights[i].lightPos - input.worldPos;
+		toLight = normalize(lightsPos[i].xyz);
+		lightIntensity = saturate(dot(normal, toLight));
+		if(lightIntensity > 0.0f)
+		{
+		    diffuseColor = ((diffuse.rgb * textureColor.rgb * Lights[i].lightColor.rgb) * lightIntensity);
+			diffuseColor = saturate(diffuseColor);
+			reflection = normalize(2 * lightIntensity * input.normal.rgb - toLight);
+			specularColor = specular.rgb * Lights[i].lightColor.rgb * pow(saturate(dot(reflection, input.viewDirection)), shinness);
+		}
+		distToLight = length(lightsPos[i].xyz);
+		atten = 1.0 / (1.0 + attenuation * pow(distToLight, 2));
+		color.rgb += atten * (diffuseColor + specularColor);
+		++i;		
+	}
+	color.rgb = saturate(color.rgb);
+	color.a = textureColor.a;
+    return color;
+}

@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DOCUMENT Type="Advanced Installer" CreateVersion="10.6" version="10.6" Modules="simple" RootPath="." Language="fr" Id="{27825681-70DE-4298-B5DF-C1B8907EA490}">
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiPropsComponent">
+    <ROW Property="AI_BITMAP_DISPLAY_MODE" Value="0"/>
+    <ROW Property="ALLUSERS" Value="1"/>
+    <ROW Property="ARPCOMMENTS" Value="Cette base de données d&apos;installation contient le code et les données nécessaires à l&apos;installation de [|ProductName]." ValueLocId="*"/>
+    <ROW Property="Manufacturer" Value="Société"/>
+    <ROW Property="ProductCode" Value="1036:{DD8D4490-E57F-45EB-8372-2BC9A919D30A} " Type="16"/>
+    <ROW Property="ProductLanguage" Value="1036"/>
+    <ROW Property="ProductName" Value="Ninja Commit"/>
+    <ROW Property="ProductVersion" Value="1.0.0" Type="32"/>
+    <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
+    <ROW Property="UpgradeCode" Value="{250A9E60-5044-443A-9897-D27856B64AE4}"/>
+    <ROW Property="WindowsType9X" MultiBuildValue="DefaultBuild:Windows 9x/ME#MixedPlatforms_Release:Windows 9x/ME" ValueLocId="-"/>
+    <ROW Property="WindowsType9XDisplay" MultiBuildValue="DefaultBuild:Windows 9x/ME#MixedPlatforms_Release:Windows 9x/ME" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT40" MultiBuildValue="DefaultBuild:Windows NT 4.0#MixedPlatforms_Release:Windows NT 4.0" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT40Display" MultiBuildValue="DefaultBuild:Windows NT 4.0#MixedPlatforms_Release:Windows NT 4.0" ValueLocId="-"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiDirsComponent">
+    <ROW Directory="APPDIR" Directory_Parent="TARGETDIR" DefaultDir="APPDIR:." IsPseudoRoot="1"/>
+    <ROW Directory="Audience.fbm_Dir" Directory_Parent="Resources_Dir" DefaultDir="Audience.fbm"/>
+    <ROW Directory="Binary_Dir" Directory_Parent="APPDIR" DefaultDir="Binary"/>
+    <ROW Directory="DLLs_Dir" Directory_Parent="APPDIR" DefaultDir="DLLs"/>
+    <ROW Directory="DesktopFolder" Directory_Parent="TARGETDIR" DefaultDir="Deskto~1|DesktopFolder" IsPseudoRoot="1"/>
+    <ROW Directory="DirectXTex_Dir" Directory_Parent="lib_Dir" DefaultDir="Direct~1|DirectXTex"/>
+    <ROW Directory="LuaBridge_Dir" Directory_Parent="Source_Dir" DefaultDir="LuaBri~1|LuaBridge"/>
+    <ROW Directory="LuaBridgemaster_Dir" Directory_Parent="lib_Dir" DefaultDir="LuaBri~1|LuaBridge-master"/>
+    <ROW Directory="Resources_Dir" Directory_Parent="Binary_Dir" DefaultDir="Resour~1|Resources"/>
+    <ROW Directory="SHORTCUTDIR" Directory_Parent="TARGETDIR" DefaultDir="SHORTC~1|SHORTCUTDIR" IsPseudoRoot="1"/>
+    <ROW Directory="Source_Dir" Directory_Parent="LuaBridgemaster_Dir" DefaultDir="Source"/>
+    <ROW Directory="TARGETDIR" DefaultDir="SourceDir"/>
+    <ROW Directory="betty.fbm_Dir" Directory_Parent="betty_Dir" DefaultDir="betty.fbm"/>
+    <ROW Directory="betty_Dir" Directory_Parent="Resources_Dir" DefaultDir="betty"/>
+    <ROW Directory="detail_Dir" Directory_Parent="LuaBridge_Dir" DefaultDir="detail"/>
+    <ROW Directory="doc_Dir" Directory_Parent="lua5.2.2_Dir" DefaultDir="doc"/>
+    <ROW Directory="include_Dir" Directory_Parent="DirectXTex_Dir" DefaultDir="include"/>
+    <ROW Directory="lib_Dir" Directory_Parent="APPDIR" DefaultDir="lib"/>
+    <ROW Directory="libdebug_1_Dir" Directory_Parent="lua5.2.2_Dir" DefaultDir="lib-de~1|lib-debug"/>
+    <ROW Directory="libdebug_Dir" Directory_Parent="DirectXTex_Dir" DefaultDir="lib-de~1|lib-debug"/>
+    <ROW Directory="librelease_1_Dir" Directory_Parent="lua5.2.2_Dir" DefaultDir="lib-re~1|lib-release"/>
+    <ROW Directory="librelease_Dir" Directory_Parent="DirectXTex_Dir" DefaultDir="lib-re~1|lib-release"/>
+    <ROW Directory="lua5.2.2_1_Dir" Directory_Parent="lua5.2.2_Dir" DefaultDir="lua-52~1.2|lua-5.2.2"/>
+    <ROW Directory="lua5.2.2_Dir" Directory_Parent="lib_Dir" DefaultDir="lua-52~1.2|lua-5.2.2"/>
+    <ROW Directory="mayaSwatches_Dir" Directory_Parent="shadow_Dir" DefaultDir="mayaSw~1|.mayaSwatches"/>
+    <ROW Directory="shadow_Dir" Directory_Parent="Resources_Dir" DefaultDir="shadow"/>
+    <ROW Directory="src_Dir" Directory_Parent="lua5.2.2_Dir" DefaultDir="src"/>
+    <ROW Directory="win7_x64_Dir" Directory_Parent="DLLs_Dir" DefaultDir="win7_x64"/>
+    <ROW Directory="win7_x86_Dir" Directory_Parent="DLLs_Dir" DefaultDir="win7_x86"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCompsComponent">
+    <ROW Component="BAd_Betty_color.jpg" ComponentId="{CF88864A-47B1-46C4-B75F-DC7615CAAA0C}" Directory_="betty_Dir" Attributes="0" KeyPath="BAd_Betty_color.jpg" Type="0"/>
+    <ROW Component="BAd_Betty_color.jpg_1" ComponentId="{BF3708FF-3009-45BE-B2EC-648AB3279A78}" Directory_="betty.fbm_Dir" Attributes="0" KeyPath="BAd_Betty_color.jpg_1" Type="0"/>
+    <ROW Component="CFunctions.h" ComponentId="{E0523002-2D07-4957-938D-6A9749DD97D6}" Directory_="detail_Dir" Attributes="0" KeyPath="CFunctions.h" Type="0"/>
+    <ROW Component="DirectXTex.h" ComponentId="{5AFD4E9C-0CCF-4774-9AC2-275F7C631F16}" Directory_="include_Dir" Attributes="0" KeyPath="DirectXTex.h" Type="0"/>
+    <ROW Component="DirectXTex.lib" ComponentId="{67FFB382-A752-4F79-A345-ADC25A1FEB62}" Directory_="libdebug_Dir" Attributes="0" KeyPath="DirectXTex.lib" Type="0"/>
+    <ROW Component="DirectXTex.lib_1" ComponentId="{1558EF6D-8B36-48F0-B87E-D5D21D2D844A}" Directory_="librelease_Dir" Attributes="0" KeyPath="DirectXTex.lib_1" Type="0"/>
+    <ROW Component="DirectX_Engine.dll" ComponentId="{728EFD59-195F-4F5C-8F43-6FE064E06D51}" Directory_="Binary_Dir" Attributes="0" KeyPath="DirectX_Engine.dll"/>
+    <ROW Component="Editor.exe" ComponentId="{0B7AC240-D848-4709-B95E-12783D3326D9}" Directory_="Binary_Dir" Attributes="0" KeyPath="Editor.exe"/>
+    <ROW Component="FBX" ComponentId="{A6D42015-4A2C-4BA6-B9E9-22DA957C29A1}" Directory_="Resources_Dir" Attributes="0" KeyPath="FBX" Type="0"/>
+    <ROW Component="IEShims.dll" ComponentId="{9B0828BD-6587-4872-980D-257C4EEBEC7F}" Directory_="DLLs_Dir" Attributes="0" KeyPath="IEShims.dll"/>
+    <ROW Component="IEShims.dll_1" ComponentId="{5718056D-AFED-441E-9739-A3A5447776F7}" Directory_="Binary_Dir" Attributes="0" KeyPath="IEShims.dll_1"/>
+    <ROW Component="ImportScene.exe" ComponentId="{B71172BD-1A83-4F61-8192-2EBE9841A101}" Directory_="Resources_Dir" Attributes="0" KeyPath="ImportScene.exe"/>
+    <ROW Component="LuaBridge.h" ComponentId="{297B4798-2A0E-432B-BBCC-5ACF5054BA3E}" Directory_="LuaBridge_Dir" Attributes="0" KeyPath="LuaBridge.h" Type="0"/>
+    <ROW Component="MahApps.Metro.dll" ComponentId="{4CC0095D-4AC1-48F8-81AF-ABF277A7285D}" Directory_="Binary_Dir" Attributes="0" KeyPath="MahApps.Metro.dll"/>
+    <ROW Component="Makefile" ComponentId="{CC400F41-CE7E-4463-B110-CA8CBD8D2E72}" Directory_="lua5.2.2_Dir" Attributes="0" KeyPath="Makefile" Type="0"/>
+    <ROW Component="Managed.dll" ComponentId="{36EA5A6C-DC37-4656-8EFA-43CB2C0B78B8}" Directory_="Binary_Dir" Attributes="0" KeyPath="Managed.dll"/>
+    <ROW Component="Microsoft.CSharp.dll" ComponentId="{5000FFF6-530E-4F46-87F6-B220210B45C4}" Directory_="Binary_Dir" Attributes="0" KeyPath="Microsoft.CSharp.dll"/>
+    <ROW Component="NvPmApi.Core.dll" ComponentId="{549944AD-479B-476A-A972-56D37FD5858C}" Directory_="win7_x64_Dir" Attributes="256" KeyPath="NvPmApi.Core.dll"/>
+    <ROW Component="NvPmApi.Core.dll_1" ComponentId="{FA397FD3-EDA7-4AFB-A742-16AFA7E32E38}" Directory_="win7_x86_Dir" Attributes="0" KeyPath="NvPmApi.Core.dll_1"/>
+    <ROW Component="NvPmApiQuery.exe" ComponentId="{CD98D21C-1161-4FF5-8382-D481C78923D1}" Directory_="win7_x86_Dir" Attributes="0" KeyPath="NvPmApiQuery.exe"/>
+    <ROW Component="Nvda.NvDebugApi.dll" ComponentId="{55DFBC00-3A9E-43E9-BCD9-E256837CC5D6}" Directory_="win7_x64_Dir" Attributes="256" KeyPath="Nvda.NvDebugApi.dll"/>
+    <ROW Component="Nvda.NvDebugApi.dll_1" ComponentId="{F868BAAB-DB04-4E17-B4AB-167210C1DED6}" Directory_="win7_x86_Dir" Attributes="0" KeyPath="Nvda.NvDebugApi.dll_1"/>
+    <ROW Component="PresentationCore.dll" ComponentId="{D7DF59B2-B45A-4262-9720-6123BF5A94C1}" Directory_="Binary_Dir" Attributes="0" KeyPath="PresentationCore.dll"/>
+    <ROW Component="PresentationFramework.Aero.dll" ComponentId="{426D6933-107C-47AB-A5B9-5638655D49AA}" Directory_="Binary_Dir" Attributes="0" KeyPath="PresentationFramework.Aero.dll"/>
+    <ROW Component="PresentationFramework.dll" ComponentId="{F7257B19-A191-4C0A-9275-FECBF66D0A2C}" Directory_="Binary_Dir" Attributes="0" KeyPath="PresentationFramework.dll"/>
+    <ROW Component="ProductInformation" ComponentId="{479B4252-F80F-400C-A709-FBDE1F91A3A1}" Directory_="APPDIR" Attributes="4" KeyPath="Version"/>
+    <ROW Component="SHORTCUTDIR" ComponentId="{BDB16194-1923-421F-931C-A6ADD94471DF}" Directory_="SHORTCUTDIR" Attributes="0"/>
+    <ROW Component="System.Core.dll" ComponentId="{4FE62E1A-BF5B-486D-943B-F89DD348A5F3}" Directory_="Binary_Dir" Attributes="0" KeyPath="System.Core.dll"/>
+    <ROW Component="System.Data.DataSetExtensions.dll" ComponentId="{62AE8D83-3673-4FC0-ACBF-E80D3AEEA97C}" Directory_="Binary_Dir" Attributes="0" KeyPath="System.Data.DataSetExtensions.dll"/>
+    <ROW Component="System.Data.dll" ComponentId="{35970D98-9F88-4051-A48A-E5D6BC5EFC43}" Directory_="Binary_Dir" Attributes="0" KeyPath="System.Data.dll"/>
+    <ROW Component="System.Windows.Forms.dll" ComponentId="{3A861CBB-11EC-4C9D-9BAA-9BF512F6E041}" Directory_="Binary_Dir" Attributes="0" KeyPath="System.Windows.Forms.dll"/>
+    <ROW Component="System.Windows.Interactivity.dll" ComponentId="{0B8A9709-F8D6-498E-A929-B541B2CD0005}" Directory_="Binary_Dir" Attributes="0" KeyPath="System.Windows.Interactivity.dll"/>
+    <ROW Component="System.Xaml.dll" ComponentId="{C1EA99DC-21C7-4C83-95A8-3E95F227EEEB}" Directory_="Binary_Dir" Attributes="0" KeyPath="System.Xaml.dll"/>
+    <ROW Component="System.Xml.Linq.dll" ComponentId="{D25AD2C2-6698-458B-B850-E48FBDA9717B}" Directory_="Binary_Dir" Attributes="0" KeyPath="System.Xml.Linq.dll"/>
+    <ROW Component="System.Xml.dll" ComponentId="{C7AD4BEC-0C7D-4BCF-B4C0-1689B7FAB102}" Directory_="Binary_Dir" Attributes="0" KeyPath="System.Xml.dll"/>
+    <ROW Component="System.dll" ComponentId="{C4B8D90D-1EA5-4DA9-9FDB-E94C47335EF0}" Directory_="Binary_Dir" Attributes="0" KeyPath="System.dll"/>
+    <ROW Component="WindowsBase.dll" ComponentId="{7FC25373-BE18-41A6-9467-EE3D60D91A21}" Directory_="Binary_Dir" Attributes="0" KeyPath="WindowsBase.dll"/>
+    <ROW Component="Xceed.Wpf.AvalonDock.Themes.Aero.dll" ComponentId="{709FCC81-4CDE-4DD3-956B-308049F8FABB}" Directory_="Binary_Dir" Attributes="0" KeyPath="Xceed.Wpf.AvalonDock.Themes.Aero.dll"/>
+    <ROW Component="Xceed.Wpf.AvalonDock.Themes.Expression.d" ComponentId="{D904CA7B-F844-47FA-AB01-50EB9D2C612A}" Directory_="Binary_Dir" Attributes="0" KeyPath="Xceed.Wpf.AvalonDock.Themes.Expression.dll"/>
+    <ROW Component="Xceed.Wpf.AvalonDock.Themes.Metro.dll" ComponentId="{132E2D76-1540-4425-A32A-D008A3AA8CC2}" Directory_="Binary_Dir" Attributes="0" KeyPath="Xceed.Wpf.AvalonDock.Themes.Metro.dll"/>
+    <ROW Component="Xceed.Wpf.AvalonDock.Themes.VS2010.dll" ComponentId="{67CC4B3F-ACED-4A06-8313-1EDACDEA24F8}" Directory_="Binary_Dir" Attributes="0" KeyPath="Xceed.Wpf.AvalonDock.Themes.VS2010.dll"/>
+    <ROW Component="Xceed.Wpf.AvalonDock.dll" ComponentId="{1A443A88-3680-4467-82AF-C3B7BB717F61}" Directory_="Binary_Dir" Attributes="0" KeyPath="Xceed.Wpf.AvalonDock.dll"/>
+    <ROW Component="contents.html" ComponentId="{17A44F5C-DD60-4136-B741-A884BBCECB2D}" Directory_="doc_Dir" Attributes="0" KeyPath="contents.html" Type="0"/>
+    <ROW Component="d3dcompiler_46.dll" ComponentId="{646B136A-4379-4310-BE4F-FE4FBA5AC60C}" Directory_="DLLs_Dir" Attributes="0" KeyPath="d3dcompiler_46.dll"/>
+    <ROW Component="d3dcompiler_46.dll_1" ComponentId="{605F7778-9161-4B42-B3F4-04B9BE8D58CF}" Directory_="Binary_Dir" Attributes="0" KeyPath="d3dcompiler_46.dll_1"/>
+    <ROW Component="diffuse.tga" ComponentId="{B3B19DFB-B2CD-47DD-B00F-6943AFA64164}" Directory_="shadow_Dir" Attributes="0" KeyPath="diffuse.tga" Type="0"/>
+    <ROW Component="diffuse.tga.swatch" ComponentId="{2CF39923-B535-48D1-93CD-70376BD4F55D}" Directory_="mayaSwatches_Dir" Attributes="0" KeyPath="diffuse.tga.swatch" Type="0"/>
+    <ROW Component="gitattributes" ComponentId="{02639701-41EC-460C-8457-87E03F2723C1}" Directory_="LuaBridgemaster_Dir" Attributes="0" KeyPath="gitattributes" Type="0"/>
+    <ROW Component="hombresuperlowtext4.jpg" ComponentId="{35CBD67E-623D-4368-8568-8B2D7E95159A}" Directory_="Audience.fbm_Dir" Attributes="0" KeyPath="hombresuperlowtext4.jpg" Type="0"/>
+    <ROW Component="lapi.c" ComponentId="{962DDA7E-3CF3-44F3-A364-BE586DF53B54}" Directory_="src_Dir" Attributes="0" KeyPath="lapi.c" Type="0"/>
+    <ROW Component="lua5.2.2.lib" ComponentId="{9322F57D-E323-4A5B-80C6-F64BBC1A0155}" Directory_="libdebug_1_Dir" Attributes="0" KeyPath="lua5.2.2.lib" Type="0"/>
+    <ROW Component="lua5.2.2.lib_1" ComponentId="{0F9DD917-9EF6-4D52-AA16-B7153622B720}" Directory_="librelease_1_Dir" Attributes="0" KeyPath="lua5.2.2.lib_1" Type="0"/>
+    <ROW Component="lua5.2.2.sln" ComponentId="{F0105459-8A87-45F8-9806-2DEAFD612EDF}" Directory_="lua5.2.2_1_Dir" Attributes="0" KeyPath="lua5.2.2.sln" Type="0"/>
+    <ROW Component="mscorlib.dll" ComponentId="{92BDA2C2-FB57-49D4-A4BA-12702522CC63}" Directory_="Binary_Dir" Attributes="0" KeyPath="mscorlib.dll"/>
+    <ROW Component="texture.ps" ComponentId="{26011B4D-D4DB-4B96-8A7A-7F391E720F98}" Directory_="Binary_Dir" Attributes="0" KeyPath="texture.ps" Type="0"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatsComponent">
+    <ROW Feature="MainFeature" Title="MainFeature" Description="Description" Display="1" Level="1" Directory_="APPDIR" Attributes="0" Components="BAd_Betty_color.jpg BAd_Betty_color.jpg_1 CFunctions.h DirectXTex.h DirectXTex.lib DirectXTex.lib_1 DirectX_Engine.dll Editor.exe FBX IEShims.dll IEShims.dll_1 ImportScene.exe LuaBridge.h MahApps.Metro.dll Makefile Managed.dll Microsoft.CSharp.dll NvPmApi.Core.dll NvPmApi.Core.dll_1 NvPmApiQuery.exe Nvda.NvDebugApi.dll Nvda.NvDebugApi.dll_1 PresentationCore.dll PresentationFramework.Aero.dll PresentationFramework.dll ProductInformation SHORTCUTDIR System.Core.dll System.Data.DataSetExtensions.dll System.Data.dll System.Windows.Forms.dll System.Windows.Interactivity.dll System.Xaml.dll System.Xml.Linq.dll System.Xml.dll System.dll WindowsBase.dll Xceed.Wpf.AvalonDock.Themes.Aero.dll Xceed.Wpf.AvalonDock.Themes.Expression.d Xceed.Wpf.AvalonDock.Themes.Metro.dll Xceed.Wpf.AvalonDock.Themes.VS2010.dll Xceed.Wpf.AvalonDock.dll contents.html d3dcompiler_46.dll d3dcompiler_46.dll_1 diffuse.tga diffuse.tga.swatch gitattributes hombresuperlowtext4.jpg lapi.c lua5.2.2.lib lua5.2.2.lib_1 lua5.2.2.sln mscorlib.dll texture.ps"/>
+    <ATTRIBUTE name="CurrentFeature" value="MainFeature"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiFilesComponent">
+    <ROW File="Audience.FBX" Component_="FBX" FileName="Audience.FBX" Attributes="0" SourcePath="..\Release\FBX\Audience.FBX" SelfReg="false" NextFile="bulldog.fbx"/>
+    <ROW File="BAd_Betty_color.jpg" Component_="BAd_Betty_color.jpg" FileName="BAd_Be~1.jpg|BAd_Betty_color.jpg" Attributes="0" SourcePath="..\Release\FBX\betty\BAd_Betty_color.jpg" SelfReg="false" NextFile="BAd_Betty_wig_color.jpg"/>
+    <ROW File="BAd_Betty_color.jpg_1" Component_="BAd_Betty_color.jpg_1" FileName="BAd_Be~1.jpg|BAd_Betty_color.jpg" Attributes="0" SourcePath="..\Release\FBX\betty\betty.fbm\BAd_Betty_color.jpg" SelfReg="false" NextFile="BAd_Betty_wig_color.jpg_1"/>
+    <ROW File="BAd_Betty_wig_color.jpg" Component_="BAd_Betty_color.jpg" FileName="BAd_Be~2.jpg|BAd_Betty_wig_color.jpg" Attributes="0" SourcePath="..\Release\FBX\betty\BAd_Betty_wig_color.jpg" SelfReg="false" NextFile="BAd_Betty_color.jpg_1"/>
+    <ROW File="BAd_Betty_wig_color.jpg_1" Component_="BAd_Betty_color.jpg_1" FileName="BAd_Be~2.jpg|BAd_Betty_wig_color.jpg" Attributes="0" SourcePath="..\Release\FBX\betty\betty.fbm\BAd_Betty_wig_color.jpg" SelfReg="false" NextFile="betty.fbx"/>
+    <ROW File="CFunctions.h" Component_="CFunctions.h" FileName="CFunct~1.h|CFunctions.h" Attributes="0" SourcePath="..\lib\LuaBridge-master\Source\LuaBridge\detail\CFunctions.h" SelfReg="false" NextFile="ClassInfo.h"/>
+    <ROW File="CHANGES" Component_="gitattributes" FileName="CHANGES" Attributes="0" SourcePath="..\lib\LuaBridge-master\CHANGES" SelfReg="false" NextFile="Doxyfile"/>
+    <ROW File="ClassInfo.h" Component_="CFunctions.h" FileName="ClassI~1.h|ClassInfo.h" Attributes="0" SourcePath="..\lib\LuaBridge-master\Source\LuaBridge\detail\ClassInfo.h" SelfReg="false" NextFile="Constructor.h"/>
+    <ROW File="Constructor.h" Component_="CFunctions.h" FileName="Constr~1.h|Constructor.h" Attributes="0" SourcePath="..\lib\LuaBridge-master\Source\LuaBridge\detail\Constructor.h" SelfReg="false" NextFile="dump.h"/>
+    <ROW File="Copie.fbx" Component_="FBX" FileName="Copie.fbx" Attributes="0" SourcePath="..\Release\FBX\Copie.fbx" SelfReg="false" NextFile="cube.fbx"/>
+    <ROW File="DirectXTex.h" Component_="DirectXTex.h" FileName="Direct~1.h|DirectXTex.h" Attributes="0" SourcePath="..\lib\DirectXTex\include\DirectXTex.h" SelfReg="false" NextFile="DirectXTex.inl"/>
+    <ROW File="DirectXTex.inl" Component_="DirectXTex.h" FileName="Direct~1.inl|DirectXTex.inl" Attributes="0" SourcePath="..\lib\DirectXTex\include\DirectXTex.inl" SelfReg="false" NextFile="DirectXTex.lib"/>
+    <ROW File="DirectXTex.lib" Component_="DirectXTex.lib" FileName="Direct~1.lib|DirectXTex.lib" Attributes="0" SourcePath="..\lib\DirectXTex\lib-debug\DirectXTex.lib" SelfReg="false" NextFile="DirectXTex.lib_1"/>
+    <ROW File="DirectXTex.lib_1" Component_="DirectXTex.lib_1" FileName="Direct~1.lib|DirectXTex.lib" Attributes="0" SourcePath="..\lib\DirectXTex\lib-release\DirectXTex.lib" SelfReg="false" NextFile="contents.html"/>
+    <ROW File="DirectX_Engine.dll" Component_="DirectX_Engine.dll" FileName="Direct~1.dll|DirectX_Engine.dll" Attributes="0" SourcePath="..\Release\DirectX_Engine.dll" SelfReg="false"/>
+    <ROW File="Doxyfile" Component_="gitattributes" FileName="Doxyfile" Attributes="0" SourcePath="..\lib\LuaBridge-master\Doxyfile" SelfReg="false" NextFile="index.html"/>
+    <ROW File="Editor.exe" Component_="Editor.exe" FileName="Editor.exe" Attributes="0" SourcePath="..\Release\Editor.exe" SelfReg="false" NextFile="WindowsBase.dll" DigSign="true"/>
+    <ROW File="FBX" Component_="FBX" FileName="02.FBX" Attributes="0" SourcePath="..\Release\FBX\02.FBX" SelfReg="false" NextFile="FBX_1"/>
+    <ROW File="FBX_1" Component_="FBX" FileName="03.FBX" Attributes="0" SourcePath="..\Release\FBX\03.FBX" SelfReg="false" NextFile="Audience.FBX"/>
+    <ROW File="FuncTraits.h" Component_="CFunctions.h" FileName="FuncTr~1.h|FuncTraits.h" Attributes="0" SourcePath="..\lib\LuaBridge-master\Source\LuaBridge\detail\FuncTraits.h" SelfReg="false" NextFile="Iterator.h"/>
+    <ROW File="GUN.fbx" Component_="FBX" FileName="GUN.fbx" Attributes="0" SourcePath="..\Release\FBX\GUN.fbx" SelfReg="false" NextFile="humanoid.fbx"/>
+    <ROW File="IEShims.dll" Component_="IEShims.dll" FileName="IEShims.dll" Attributes="0" SourcePath="..\DLLs\IEShims.dll" SelfReg="false" NextFile="Nvda.NvDebugApi.dll"/>
+    <ROW File="IEShims.dll_1" Component_="IEShims.dll_1" FileName="IEShims.dll" Attributes="0" SourcePath="..\DLLs\IEShims.dll" SelfReg="false" NextFile="DirectX_Engine.dll"/>
+    <ROW File="ImportScene.exe" Component_="ImportScene.exe" FileName="Import~1.exe|ImportScene.exe" Attributes="0" SourcePath="..\Release\FBX\ImportScene.exe" SelfReg="false" NextFile="page.FBX" DigSign="true"/>
+    <ROW File="Iterator.h" Component_="CFunctions.h" FileName="Iterator.h" Attributes="0" SourcePath="..\lib\LuaBridge-master\Source\LuaBridge\detail\Iterator.h" SelfReg="false" NextFile="LuaException.h"/>
+    <ROW File="LuaBridge.h" Component_="LuaBridge.h" FileName="LuaBri~1.h|LuaBridge.h" Attributes="0" SourcePath="..\lib\LuaBridge-master\Source\LuaBridge\LuaBridge.h" SelfReg="false" NextFile="RefCountedObject.h"/>
+    <ROW File="LuaException.h" Component_="CFunctions.h" FileName="LuaExc~1.h|LuaException.h" Attributes="0" SourcePath="..\lib\LuaBridge-master\Source\LuaBridge\detail\LuaException.h" SelfReg="false" NextFile="LuaHelpers.h"/>
+    <ROW File="LuaHelpers.h" Component_="CFunctions.h" FileName="LuaHel~1.h|LuaHelpers.h" Attributes="0" SourcePath="..\lib\LuaBridge-master\Source\LuaBridge\detail\LuaHelpers.h" SelfReg="false" NextFile="LuaRef.h"/>
+    <ROW File="LuaRef.h" Component_="CFunctions.h" FileName="LuaRef.h" Attributes="0" SourcePath="..\lib\LuaBridge-master\Source\LuaBridge\detail\LuaRef.h" SelfReg="false" NextFile="Namespace.h"/>
+    <ROW File="MahApps.Metro.dll" Component_="MahApps.Metro.dll" FileName="MahApp~1.dll|MahApps.Metro.dll" Attributes="0" SourcePath="..\packages\MahApps.Metro.0.10.1.1\lib\net45\MahApps.Metro.dll" SelfReg="false" NextFile="System.Windows.Forms.dll"/>
+    <ROW File="Makefile" Component_="Makefile" FileName="Makefile" Attributes="0" SourcePath="..\lib\lua-5.2.2\Makefile" SelfReg="false" NextFile="README"/>
+    <ROW File="Makefile_1" Component_="lapi.c" FileName="Makefile" Attributes="0" SourcePath="..\lib\lua-5.2.2\src\Makefile" SelfReg="false" NextFile="gitattributes"/>
+    <ROW File="Managed.dll" Component_="Managed.dll" FileName="Managed.dll" Attributes="0" SourcePath="..\Release\Managed.dll" SelfReg="false" NextFile="System.dll"/>
+    <ROW File="Manual.html_1" Component_="gitattributes" FileName="Manual~1.htm|Manual.html" Attributes="0" SourcePath="..\lib\LuaBridge-master\Manual.html" SelfReg="false" NextFile="README.md"/>
+    <ROW File="Microsoft.CSharp.dll" Component_="Microsoft.CSharp.dll" FileName="Micros~1.dll|Microsoft.CSharp.dll" Attributes="0" SourcePath="..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Microsoft.CSharp.dll" SelfReg="false" NextFile="Xceed.Wpf.AvalonDock.Themes.Expression.dll"/>
+    <ROW File="Namespace.h" Component_="CFunctions.h" FileName="Namesp~1.h|Namespace.h" Attributes="0" SourcePath="..\lib\LuaBridge-master\Source\LuaBridge\detail\Namespace.h" SelfReg="false" NextFile="Stack.h"/>
+    <ROW File="NvPmApi.Core.dll" Component_="NvPmApi.Core.dll" FileName="NvPmAp~1.dll|NvPmApi.Core.dll" Attributes="0" SourcePath="..\DLLs\win7_x64\NvPmApi.Core.dll" SelfReg="false" NextFile="Nvda.NvDebugApi.dll_1"/>
+    <ROW File="NvPmApi.Core.dll_1" Component_="NvPmApi.Core.dll_1" FileName="NvPmAp~1.dll|NvPmApi.Core.dll" Attributes="0" SourcePath="..\DLLs\win7_x86\NvPmApi.Core.dll" SelfReg="false" NextFile="NvPmApiQuery.exe"/>
+    <ROW File="NvPmApiQuery.exe" Component_="NvPmApiQuery.exe" FileName="NvPmAp~1.exe|NvPmApiQuery.exe" Attributes="0" SourcePath="..\DLLs\win7_x86\NvPmApiQuery.exe" SelfReg="false" NextFile="d3dcompiler_46.dll_1" DigSign="true"/>
+    <ROW File="Nvda.NvDebugApi.dll" Component_="Nvda.NvDebugApi.dll" FileName="NvdaNv~1.dll|Nvda.NvDebugApi.dll" Attributes="0" SourcePath="..\DLLs\win7_x64\Nvda.NvDebugApi.dll" SelfReg="false" NextFile="NvPmApi.Core.dll"/>
+    <ROW File="Nvda.NvDebugApi.dll_1" Component_="Nvda.NvDebugApi.dll_1" FileName="NvdaNv~1.dll|Nvda.NvDebugApi.dll" Attributes="0" SourcePath="..\DLLs\win7_x86\Nvda.NvDebugApi.dll" SelfReg="false" NextFile="NvPmApi.Core.dll_1"/>
+    <ROW File="PresentationCore.dll" Component_="PresentationCore.dll" FileName="Presen~2.dll|PresentationCore.dll" Attributes="0" SourcePath="..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\PresentationCore.dll" SelfReg="false" NextFile="PresentationFramework.dll"/>
+    <ROW File="PresentationFramework.Aero.dll" Component_="PresentationFramework.Aero.dll" FileName="Presen~3.dll|PresentationFramework.Aero.dll" Attributes="0" SourcePath="..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\PresentationFramework.Aero.dll" SelfReg="false" NextFile="Editor.exe"/>
+    <ROW File="PresentationFramework.dll" Component_="PresentationFramework.dll" FileName="Presen~1.dll|PresentationFramework.dll" Attributes="0" SourcePath="..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\PresentationFramework.dll" SelfReg="false" NextFile="Xceed.Wpf.AvalonDock.dll"/>
+    <ROW File="README" Component_="Makefile" FileName="README" Attributes="0" SourcePath="..\lib\lua-5.2.2\README" SelfReg="false" NextFile="lapi.c"/>
+    <ROW File="README.md" Component_="gitattributes" FileName="README.md" Attributes="0" SourcePath="..\lib\LuaBridge-master\README.md" SelfReg="false" NextFile="CFunctions.h"/>
+    <ROW File="ReadMe.txt" Component_="lua5.2.2.sln" FileName="ReadMe.txt" Attributes="0" SourcePath="..\lib\lua-5.2.2\lua-5.2.2\ReadMe.txt" SelfReg="false" NextFile="Makefile"/>
+    <ROW File="RefCountedObject.h" Component_="LuaBridge.h" FileName="RefCou~1.h|RefCountedObject.h" Attributes="0" SourcePath="..\lib\LuaBridge-master\Source\LuaBridge\RefCountedObject.h" SelfReg="false" NextFile="RefCountedPtr.h"/>
+    <ROW File="RefCountedPtr.h" Component_="LuaBridge.h" FileName="RefCou~2.h|RefCountedPtr.h" Attributes="0" SourcePath="..\lib\LuaBridge-master\Source\LuaBridge\RefCountedPtr.h" SelfReg="false" NextFile="d3dcompiler_46.dll"/>
+    <ROW File="Rock1.fbx" Component_="FBX" FileName="Rock1.fbx" Attributes="0" SourcePath="..\Release\FBX\Rock1.fbx" SelfReg="false" NextFile="sig.fbx"/>
+    <ROW File="Shadow.fbx" Component_="diffuse.tga" FileName="Shadow.fbx" Attributes="0" SourcePath="..\Release\FBX\shadow\Shadow.fbx" SelfReg="false" NextFile="specular.tga"/>
+    <ROW File="Stack.h" Component_="CFunctions.h" FileName="Stack.h" Attributes="0" SourcePath="..\lib\LuaBridge-master\Source\LuaBridge\detail\Stack.h" SelfReg="false" NextFile="TypeList.h"/>
+    <ROW File="System.Core.dll" Component_="System.Core.dll" FileName="System~4.dll|System.Core.dll" Attributes="0" SourcePath="..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Core.dll" SelfReg="false" NextFile="System.Xml.Linq.dll"/>
+    <ROW File="System.Data.DataSetExtensions.dll" Component_="System.Data.DataSetExtensions.dll" FileName="System~8.dll|System.Data.DataSetExtensions.dll" Attributes="0" SourcePath="..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Data.DataSetExtensions.dll" SelfReg="false" NextFile="System.Xml.dll"/>
+    <ROW File="System.Data.dll" Component_="System.Data.dll" FileName="System~2.dll|System.Data.dll" Attributes="0" SourcePath="..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Data.dll" SelfReg="false" NextFile="PresentationFramework.Aero.dll"/>
+    <ROW File="System.Windows.Forms.dll" Component_="System.Windows.Forms.dll" FileName="System~1.dll|System.Windows.Forms.dll" Attributes="0" SourcePath="..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Windows.Forms.dll" SelfReg="false" NextFile="System.Windows.Interactivity.dll"/>
+    <ROW File="System.Windows.Interactivity.dll" Component_="System.Windows.Interactivity.dll" FileName="System~6.dll|System.Windows.Interactivity.dll" Attributes="0" SourcePath="..\packages\MahApps.Metro.0.10.1.1\lib\net45\System.Windows.Interactivity.dll" SelfReg="false" NextFile="System.Data.DataSetExtensions.dll"/>
+    <ROW File="System.Xaml.dll" Component_="System.Xaml.dll" FileName="System~5.dll|System.Xaml.dll" Attributes="0" SourcePath="..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Xaml.dll" SelfReg="false" NextFile="PresentationCore.dll"/>
+    <ROW File="System.Xml.Linq.dll" Component_="System.Xml.Linq.dll" FileName="System~7.dll|System.Xml.Linq.dll" Attributes="0" SourcePath="..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Xml.Linq.dll" SelfReg="false" NextFile="System.Xaml.dll"/>
+    <ROW File="System.Xml.dll" Component_="System.Xml.dll" FileName="System~3.dll|System.Xml.dll" Attributes="0" SourcePath="..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Xml.dll" SelfReg="false" NextFile="Microsoft.CSharp.dll"/>
+    <ROW File="System.dll" Component_="System.dll" FileName="System.dll" Attributes="0" SourcePath="..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.dll" SelfReg="false" NextFile="System.Data.dll"/>
+    <ROW File="T1.FBX" Component_="FBX" FileName="T1.FBX" Attributes="0" SourcePath="..\Release\FBX\T1.FBX" SelfReg="false" NextFile="test"/>
+    <ROW File="Thumbs.db" Component_="hombresuperlowtext4.jpg" FileName="Thumbs.db" Attributes="6" SourcePath="..\Release\FBX\Audience.fbm\Thumbs.db" SelfReg="false" NextFile="BAd_Betty_color.jpg"/>
+    <ROW File="Thumbs.db_1" Component_="BAd_Betty_color.jpg" FileName="Thumbs.db" Attributes="6" SourcePath="..\Release\FBX\betty\Thumbs.db" SelfReg="false" NextFile="diffuse.tga.swatch"/>
+    <ROW File="TypeList.h" Component_="CFunctions.h" FileName="TypeList.h" Attributes="0" SourcePath="..\lib\LuaBridge-master\Source\LuaBridge\detail\TypeList.h" SelfReg="false" NextFile="TypeTraits.h"/>
+    <ROW File="TypeTraits.h" Component_="CFunctions.h" FileName="TypeTr~1.h|TypeTraits.h" Attributes="0" SourcePath="..\lib\LuaBridge-master\Source\LuaBridge\detail\TypeTraits.h" SelfReg="false" NextFile="Userdata.h"/>
+    <ROW File="Userdata.h" Component_="CFunctions.h" FileName="Userdata.h" Attributes="0" SourcePath="..\lib\LuaBridge-master\Source\LuaBridge\detail\Userdata.h" SelfReg="false" NextFile="LuaBridge.h"/>
+    <ROW File="WindowsBase.dll" Component_="WindowsBase.dll" FileName="Window~1.dll|WindowsBase.dll" Attributes="0" SourcePath="..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\WindowsBase.dll" SelfReg="false" NextFile="MahApps.Metro.dll"/>
+    <ROW File="Xceed.Wpf.AvalonDock.Themes.Aero.dll" Component_="Xceed.Wpf.AvalonDock.Themes.Aero.dll" FileName="XceedW~3.dll|Xceed.Wpf.AvalonDock.Themes.Aero.dll" Attributes="0" SourcePath="..\packages\AvalonDock.2.0.2000\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll" SelfReg="false" NextFile="Xceed.Wpf.AvalonDock.Themes.Metro.dll"/>
+    <ROW File="Xceed.Wpf.AvalonDock.Themes.Expression.dll" Component_="Xceed.Wpf.AvalonDock.Themes.Expression.d" FileName="XceedW~2.dll|Xceed.Wpf.AvalonDock.Themes.Expression.dll" Attributes="0" SourcePath="..\packages\AvalonDock.2.0.2000\lib\net40\Xceed.Wpf.AvalonDock.Themes.Expression.dll" SelfReg="false" NextFile="System.Core.dll"/>
+    <ROW File="Xceed.Wpf.AvalonDock.Themes.Metro.dll" Component_="Xceed.Wpf.AvalonDock.Themes.Metro.dll" FileName="XceedW~5.dll|Xceed.Wpf.AvalonDock.Themes.Metro.dll" Attributes="0" SourcePath="..\packages\AvalonDock.2.0.2000\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll" SelfReg="false" NextFile="Xceed.Wpf.AvalonDock.Themes.VS2010.dll"/>
+    <ROW File="Xceed.Wpf.AvalonDock.Themes.VS2010.dll" Component_="Xceed.Wpf.AvalonDock.Themes.VS2010.dll" FileName="XceedW~4.dll|Xceed.Wpf.AvalonDock.Themes.VS2010.dll" Attributes="0" SourcePath="..\packages\AvalonDock.2.0.2000\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll" SelfReg="false" NextFile="hombresuperlowtext4.jpg"/>
+    <ROW File="Xceed.Wpf.AvalonDock.dll" Component_="Xceed.Wpf.AvalonDock.dll" FileName="XceedW~1.dll|Xceed.Wpf.AvalonDock.dll" Attributes="0" SourcePath="..\packages\AvalonDock.2.0.2000\lib\net40\Xceed.Wpf.AvalonDock.dll" SelfReg="false" NextFile="Xceed.Wpf.AvalonDock.Themes.Aero.dll"/>
+    <ROW File="betty.fbx" Component_="BAd_Betty_color.jpg" FileName="betty.fbx" Attributes="0" SourcePath="..\Release\FBX\betty\betty.fbx" SelfReg="false" NextFile="Thumbs.db_1"/>
+    <ROW File="bulldog.fbx" Component_="FBX" FileName="bulldog.fbx" Attributes="0" SourcePath="..\Release\FBX\bulldog.fbx" SelfReg="false" NextFile="Copie.fbx"/>
+    <ROW File="contents.html" Component_="contents.html" FileName="conten~1.htm|contents.html" Attributes="0" SourcePath="..\lib\lua-5.2.2\doc\contents.html" SelfReg="false" NextFile="logo.gif"/>
+    <ROW File="cube.fbx" Component_="FBX" FileName="cube.fbx" Attributes="0" SourcePath="..\Release\FBX\cube.fbx" SelfReg="false" NextFile="font.dds"/>
+    <ROW File="d3dcompiler_46.dll" Component_="d3dcompiler_46.dll" FileName="d3dcom~1.dll|d3dcompiler_46.dll" Attributes="0" SourcePath="..\DLLs\d3dcompiler_46.dll" SelfReg="false" NextFile="IEShims.dll"/>
+    <ROW File="d3dcompiler_46.dll_1" Component_="d3dcompiler_46.dll_1" FileName="d3dcom~1.dll|d3dcompiler_46.dll" Attributes="0" SourcePath="..\DLLs\d3dcompiler_46.dll" SelfReg="false" NextFile="IEShims.dll_1"/>
+    <ROW File="diffuse.tga" Component_="diffuse.tga" FileName="diffuse.tga" Attributes="0" SourcePath="..\Release\FBX\shadow\diffuse.tga" SelfReg="false" NextFile="glow.tga"/>
+    <ROW File="diffuse.tga.swatch" Component_="diffuse.tga.swatch" FileName="diffus~1.swa|diffuse.tga.swatch" Attributes="0" SourcePath="..\Release\FBX\shadow\.mayaSwatches\diffuse.tga.swatch" SelfReg="false" NextFile="diffuse.tga"/>
+    <ROW File="dump.h" Component_="CFunctions.h" FileName="dump.h" Attributes="0" SourcePath="..\lib\LuaBridge-master\Source\LuaBridge\detail\dump.h" SelfReg="false" NextFile="FuncTraits.h"/>
+    <ROW File="font.dds" Component_="FBX" FileName="font.dds" Attributes="0" SourcePath="..\Release\FBX\font.dds" SelfReg="false" NextFile="fontdata.txt"/>
+    <ROW File="fontdata.txt" Component_="FBX" FileName="fontdata.txt" Attributes="0" SourcePath="..\Release\FBX\fontdata.txt" SelfReg="false" NextFile="frame.tga"/>
+    <ROW File="frame.tga" Component_="FBX" FileName="frame.tga" Attributes="0" SourcePath="..\Release\FBX\frame.tga" SelfReg="false" NextFile="GUN.fbx"/>
+    <ROW File="gitattributes" Component_="gitattributes" FileName="gitatt~1|.gitattributes" Attributes="0" SourcePath="..\lib\LuaBridge-master\.gitattributes" SelfReg="false" NextFile="gitignore"/>
+    <ROW File="gitignore" Component_="gitattributes" FileName="gitign~1|.gitignore" Attributes="0" SourcePath="..\lib\LuaBridge-master\.gitignore" SelfReg="false" NextFile="CHANGES"/>
+    <ROW File="glow.tga" Component_="diffuse.tga" FileName="glow.tga" Attributes="0" SourcePath="..\Release\FBX\shadow\glow.tga" SelfReg="false" NextFile="Shadow.fbx"/>
+    <ROW File="hombresuperlowtext4.jpg" Component_="hombresuperlowtext4.jpg" FileName="hombre~1.jpg|hombre-super-low-text4.jpg" Attributes="0" SourcePath="..\Release\FBX\Audience.fbm\hombre-super-low-text4.jpg" SelfReg="false" NextFile="Thumbs.db"/>
+    <ROW File="humanoid.fbx" Component_="FBX" FileName="humanoid.fbx" Attributes="0" SourcePath="..\Release\FBX\humanoid.fbx" SelfReg="false" NextFile="ImportScene.exe"/>
+    <ROW File="index.html" Component_="gitattributes" FileName="index~1.htm|index.html" Attributes="0" SourcePath="..\lib\LuaBridge-master\index.html" SelfReg="false" NextFile="Manual.html_1"/>
+    <ROW File="lapi.c" Component_="lapi.c" FileName="lapi.c" Attributes="0" SourcePath="..\lib\lua-5.2.2\src\lapi.c" SelfReg="false" NextFile="lapi.h"/>
+    <ROW File="lapi.h" Component_="lapi.c" FileName="lapi.h" Attributes="0" SourcePath="..\lib\lua-5.2.2\src\lapi.h" SelfReg="false" NextFile="lauxlib.c"/>
+    <ROW File="lauxlib.c" Component_="lapi.c" FileName="lauxlib.c" Attributes="0" SourcePath="..\lib\lua-5.2.2\src\lauxlib.c" SelfReg="false" NextFile="lauxlib.h"/>
+    <ROW File="lauxlib.h" Component_="lapi.c" FileName="lauxlib.h" Attributes="0" SourcePath="..\lib\lua-5.2.2\src\lauxlib.h" SelfReg="false" NextFile="lbaselib.c"/>
+    <ROW File="lbaselib.c" Component_="lapi.c" FileName="lbaselib.c" Attributes="0" SourcePath="..\lib\lua-5.2.2\src\lbaselib.c" SelfReg="false" NextFile="lbitlib.c"/>
+    <ROW File="lbitlib.c" Component_="lapi.c" FileName="lbitlib.c" Attributes="0" SourcePath="..\lib\lua-5.2.2\src\lbitlib.c" SelfReg="false" NextFile="lcode.c"/>
+    <ROW File="lcode.c" Component_="lapi.c" FileName="lcode.c" Attributes="0" SourcePath="..\lib\lua-5.2.2\src\lcode.c" SelfReg="false" NextFile="lcode.h"/>
+    <ROW File="lcode.h" Component_="lapi.c" FileName="lcode.h" Attributes="0" SourcePath="..\lib\lua-5.2.2\src\lcode.h" SelfReg="false" NextFile="lcorolib.c"/>
+    <ROW File="lcorolib.c" Component_="lapi.c" FileName="lcorolib.c" Attributes="0" SourcePath="..\lib\lua-5.2.2\src\lcorolib.c" SelfReg="false" NextFile="lctype.c"/>
+    <ROW File="lctype.c" Component_="lapi.c" FileName="lctype.c" Attributes="0" SourcePath="..\lib\lua-5.2.2\src\lctype.c" SelfReg="false" NextFile="lctype.h"/>
+    <ROW File="lctype.h" Component_="lapi.c" FileName="lctype.h" Attributes="0" SourcePath="..\lib\lua-5.2.2\src\lctype.h" SelfReg="false" NextFile="ldblib.c"/>
+    <ROW File="ldblib.c" Component_="lapi.c" FileName="ldblib.c" Attributes="0" SourcePath="..\lib\lua-5.2.2\src\ldblib.c" SelfReg="false" NextFile="ldebug.c"/>
+    <ROW File="ldebug.c" Component_="lapi.c" FileName="ldebug.c" Attributes="0" SourcePath="..\lib\lua-5.2.2\src\ldebug.c" SelfReg="false" NextFile="ldebug.h"/>
+    <ROW File="ldebug.h" Component_="lapi.c" FileName="ldebug.h" Attributes="0" SourcePath="..\lib\lua-5.2.2\src\ldebug.h" SelfReg="false" NextFile="ldo.c"/>
+    <ROW File="ldo.c" Component_="lapi.c" FileName="ldo.c" Attributes="0" SourcePath="..\lib\lua-5.2.2\src\ldo.c" SelfReg="false" NextFile="ldo.h"/>
+    <ROW File="ldo.h" Component_="lapi.c" FileName="ldo.h" Attributes="0" SourcePath="..\lib\lua-5.2.2\src\ldo.h" SelfReg="false" NextFile="ldump.c"/>
+    <ROW File="ldump.c" Component_="lapi.c" FileName="ldump.c" Attributes="0" SourcePath="..\lib\lua-5.2.2\src\ldump.c" SelfReg="false" NextFile="lfunc.c"/>
+    <ROW File="lfunc.c" Component_="lapi.c" FileName="lfunc.c" Attributes="0" SourcePath="..\lib\lua-5.2.2\src\lfunc.c" SelfReg="false" NextFile="lfunc.h"/>
+    <ROW File="lfunc.h" Component_="lapi.c" FileName="lfunc.h" Attributes="0" SourcePath="..\lib\lua-5.2.2\src\lfunc.h" SelfReg="false" NextFile="lgc.c"/>
+    <ROW File="lgc.c" Component_="lapi.c" FileName="lgc.c" Attributes="0" SourcePath="..\lib\lua-5.2.2\src\lgc.c" SelfReg="false" NextFile="lgc.h"/>
+    <ROW File="lgc.h" Component_="lapi.c" FileName="lgc.h" Attributes="0" SourcePath="..\lib\lua-5.2.2\src\lgc.h" SelfReg="false" NextFile="linit.c"/>
+    <ROW File="linit.c" Component_="lapi.c" FileName="linit.c" Attributes="0" SourcePath="..\lib\lua-5.2.2\src\linit.c" SelfReg="false" NextFile="liolib.c"/>
+    <ROW File="liolib.c" Component_="lapi.c" FileName="liolib.c" Attributes="0" SourcePath="..\lib\lua-5.2.2\src\liolib.c" SelfReg="false" NextFile="llex.c"/>
+    <ROW File="llex.c" Component_="lapi.c" FileName="llex.c" Attributes="0" SourcePath="..\lib\lua-5.2.2\src\llex.c" SelfReg="false" NextFile="llex.h"/>
+    <ROW File="llex.h" Component_="lapi.c" FileName="llex.h" Attributes="0" SourcePath="..\lib\lua-5.2.2\src\llex.h" SelfReg="false" NextFile="llimits.h"/>
+    <ROW File="llimits.h" Component_="lapi.c" FileName="llimits.h" Attributes="0" SourcePath="..\lib\lua-5.2.2\src\llimits.h" SelfReg="false" NextFile="lmathlib.c"/>
+    <ROW File="lmathlib.c" Component_="lapi.c" FileName="lmathlib.c" Attributes="0" SourcePath="..\lib\lua-5.2.2\src\lmathlib.c" SelfReg="false" NextFile="lmem.c"/>
+    <ROW File="lmem.c" Component_="lapi.c" FileName="lmem.c" Attributes="0" SourcePath="..\lib\lua-5.2.2\src\lmem.c" SelfReg="false" NextFile="lmem.h"/>
+    <ROW File="lmem.h" Component_="lapi.c" FileName="lmem.h" Attributes="0" SourcePath="..\lib\lua-5.2.2\src\lmem.h" SelfReg="false" NextFile="loadlib.c"/>
+    <ROW File="loadlib.c" Component_="lapi.c" FileName="loadlib.c" Attributes="0" SourcePath="..\lib\lua-5.2.2\src\loadlib.c" SelfReg="false" NextFile="lobject.c"/>
+    <ROW File="lobject.c" Component_="lapi.c" FileName="lobject.c" Attributes="0" SourcePath="..\lib\lua-5.2.2\src\lobject.c" SelfReg="false" NextFile="lobject.h"/>
+    <ROW File="lobject.h" Component_="lapi.c" FileName="lobject.h" Attributes="0" SourcePath="..\lib\lua-5.2.2\src\lobject.h" SelfReg="false" NextFile="lopcodes.c"/>
+    <ROW File="logo.gif" Component_="contents.html" FileName="logo.gif" Attributes="0" SourcePath="..\lib\lua-5.2.2\doc\logo.gif" SelfReg="false" NextFile="lua.1"/>
+    <ROW File="lopcodes.c" Component_="lapi.c" FileName="lopcodes.c" Attributes="0" SourcePath="..\lib\lua-5.2.2\src\lopcodes.c" SelfReg="false" NextFile="lopcodes.h"/>
+    <ROW File="lopcodes.h" Component_="lapi.c" FileName="lopcodes.h" Attributes="0" SourcePath="..\lib\lua-5.2.2\src\lopcodes.h" SelfReg="false" NextFile="loslib.c"/>
+    <ROW File="loslib.c" Component_="lapi.c" FileName="loslib.c" Attributes="0" SourcePath="..\lib\lua-5.2.2\src\loslib.c" SelfReg="false" NextFile="lparser.c"/>
+    <ROW File="lparser.c" Component_="lapi.c" FileName="lparser.c" Attributes="0" SourcePath="..\lib\lua-5.2.2\src\lparser.c" SelfReg="false" NextFile="lparser.h"/>
+    <ROW File="lparser.h" Component_="lapi.c" FileName="lparser.h" Attributes="0" SourcePath="..\lib\lua-5.2.2\src\lparser.h" SelfReg="false" NextFile="lstate.c"/>
+    <ROW File="lstate.c" Component_="lapi.c" FileName="lstate.c" Attributes="0" SourcePath="..\lib\lua-5.2.2\src\lstate.c" SelfReg="false" NextFile="lstate.h"/>
+    <ROW File="lstate.h" Component_="lapi.c" FileName="lstate.h" Attributes="0" SourcePath="..\lib\lua-5.2.2\src\lstate.h" SelfReg="false" NextFile="lstring.c"/>
+    <ROW File="lstring.c" Component_="lapi.c" FileName="lstring.c" Attributes="0" SourcePath="..\lib\lua-5.2.2\src\lstring.c" SelfReg="false" NextFile="lstring.h"/>
+    <ROW File="lstring.h" Component_="lapi.c" FileName="lstring.h" Attributes="0" SourcePath="..\lib\lua-5.2.2\src\lstring.h" SelfReg="false" NextFile="lstrlib.c"/>
+    <ROW File="lstrlib.c" Component_="lapi.c" FileName="lstrlib.c" Attributes="0" SourcePath="..\lib\lua-5.2.2\src\lstrlib.c" SelfReg="false" NextFile="ltable.c"/>
+    <ROW File="ltable.c" Component_="lapi.c" FileName="ltable.c" Attributes="0" SourcePath="..\lib\lua-5.2.2\src\ltable.c" SelfReg="false" NextFile="ltable.h"/>
+    <ROW File="ltable.h" Component_="lapi.c" FileName="ltable.h" Attributes="0" SourcePath="..\lib\lua-5.2.2\src\ltable.h" SelfReg="false" NextFile="ltablib.c"/>
+    <ROW File="ltablib.c" Component_="lapi.c" FileName="ltablib.c" Attributes="0" SourcePath="..\lib\lua-5.2.2\src\ltablib.c" SelfReg="false" NextFile="ltm.c"/>
+    <ROW File="ltm.c" Component_="lapi.c" FileName="ltm.c" Attributes="0" SourcePath="..\lib\lua-5.2.2\src\ltm.c" SelfReg="false" NextFile="ltm.h"/>
+    <ROW File="ltm.h" Component_="lapi.c" FileName="ltm.h" Attributes="0" SourcePath="..\lib\lua-5.2.2\src\ltm.h" SelfReg="false" NextFile="lua.c"/>
+    <ROW File="lua.1" Component_="contents.html" FileName="lua.1" Attributes="0" SourcePath="..\lib\lua-5.2.2\doc\lua.1" SelfReg="false" NextFile="lua.css"/>
+    <ROW File="lua.c" Component_="lapi.c" FileName="lua.c" Attributes="0" SourcePath="..\lib\lua-5.2.2\src\lua.c" SelfReg="false" NextFile="lua.h"/>
+    <ROW File="lua.css" Component_="contents.html" FileName="lua.css" Attributes="0" SourcePath="..\lib\lua-5.2.2\doc\lua.css" SelfReg="false" NextFile="luac.1"/>
+    <ROW File="lua.h" Component_="lapi.c" FileName="lua.h" Attributes="0" SourcePath="..\lib\lua-5.2.2\src\lua.h" SelfReg="false" NextFile="lua.hpp"/>
+    <ROW File="lua.hpp" Component_="lapi.c" FileName="lua.hpp" Attributes="0" SourcePath="..\lib\lua-5.2.2\src\lua.hpp" SelfReg="false" NextFile="luac.c"/>
+    <ROW File="lua5.2.2.lib" Component_="lua5.2.2.lib" FileName="lua-52~1.lib|lua-5.2.2.lib" Attributes="0" SourcePath="..\lib\lua-5.2.2\lib-debug\lua-5.2.2.lib" SelfReg="false" NextFile="lua5.2.2.lib_1"/>
+    <ROW File="lua5.2.2.lib_1" Component_="lua5.2.2.lib_1" FileName="lua-52~1.lib|lua-5.2.2.lib" Attributes="0" SourcePath="..\lib\lua-5.2.2\lib-release\lua-5.2.2.lib" SelfReg="false" NextFile="lua5.2.2.sln"/>
+    <ROW File="lua5.2.2.sln" Component_="lua5.2.2.sln" FileName="lua-52~1.sln|lua-5.2.2.sln" Attributes="0" SourcePath="..\lib\lua-5.2.2\lua-5.2.2\lua-5.2.2.sln" SelfReg="false" NextFile="lua5.2.2.vcxproj"/>
+    <ROW File="lua5.2.2.vcxproj" Component_="lua5.2.2.sln" FileName="lua-52~1.vcx|lua-5.2.2.vcxproj" Attributes="0" SourcePath="..\lib\lua-5.2.2\lua-5.2.2\lua-5.2.2.vcxproj" SelfReg="false" NextFile="lua5.2.2.vcxproj.filters"/>
+    <ROW File="lua5.2.2.vcxproj.filters" Component_="lua5.2.2.sln" FileName="lua-52~1.fil|lua-5.2.2.vcxproj.filters" Attributes="0" SourcePath="..\lib\lua-5.2.2\lua-5.2.2\lua-5.2.2.vcxproj.filters" SelfReg="false" NextFile="ReadMe.txt"/>
+    <ROW File="luac.1" Component_="contents.html" FileName="luac.1" Attributes="0" SourcePath="..\lib\lua-5.2.2\doc\luac.1" SelfReg="false" NextFile="manual.css"/>
+    <ROW File="luac.c" Component_="lapi.c" FileName="luac.c" Attributes="0" SourcePath="..\lib\lua-5.2.2\src\luac.c" SelfReg="false" NextFile="luaconf.h"/>
+    <ROW File="luaconf.h" Component_="lapi.c" FileName="luaconf.h" Attributes="0" SourcePath="..\lib\lua-5.2.2\src\luaconf.h" SelfReg="false" NextFile="lualib.h"/>
+    <ROW File="lualib.h" Component_="lapi.c" FileName="lualib.h" Attributes="0" SourcePath="..\lib\lua-5.2.2\src\lualib.h" SelfReg="false" NextFile="lundump.c"/>
+    <ROW File="lundump.c" Component_="lapi.c" FileName="lundump.c" Attributes="0" SourcePath="..\lib\lua-5.2.2\src\lundump.c" SelfReg="false" NextFile="lundump.h"/>
+    <ROW File="lundump.h" Component_="lapi.c" FileName="lundump.h" Attributes="0" SourcePath="..\lib\lua-5.2.2\src\lundump.h" SelfReg="false" NextFile="lvm.c"/>
+    <ROW File="lvm.c" Component_="lapi.c" FileName="lvm.c" Attributes="0" SourcePath="..\lib\lua-5.2.2\src\lvm.c" SelfReg="false" NextFile="lvm.h"/>
+    <ROW File="lvm.h" Component_="lapi.c" FileName="lvm.h" Attributes="0" SourcePath="..\lib\lua-5.2.2\src\lvm.h" SelfReg="false" NextFile="lzio.c"/>
+    <ROW File="lzio.c" Component_="lapi.c" FileName="lzio.c" Attributes="0" SourcePath="..\lib\lua-5.2.2\src\lzio.c" SelfReg="false" NextFile="lzio.h"/>
+    <ROW File="lzio.h" Component_="lapi.c" FileName="lzio.h" Attributes="0" SourcePath="..\lib\lua-5.2.2\src\lzio.h" SelfReg="false" NextFile="Makefile_1"/>
+    <ROW File="manual.css" Component_="contents.html" FileName="manual.css" Attributes="0" SourcePath="..\lib\lua-5.2.2\doc\manual.css" SelfReg="false" NextFile="manual.html"/>
+    <ROW File="manual.html" Component_="contents.html" FileName="manual~1.htm|manual.html" Attributes="0" SourcePath="..\lib\lua-5.2.2\doc\manual.html" SelfReg="false" NextFile="osicertified72x60.png"/>
+    <ROW File="mscorlib.dll" Component_="mscorlib.dll" FileName="mscorlib.dll" Attributes="0" SourcePath="..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\mscorlib.dll" SelfReg="false" NextFile="Managed.dll"/>
+    <ROW File="osicertified72x60.png" Component_="contents.html" FileName="osi-ce~1.png|osi-certified-72x60.png" Attributes="0" SourcePath="..\lib\lua-5.2.2\doc\osi-certified-72x60.png" SelfReg="false" NextFile="readme.html"/>
+    <ROW File="page.FBX" Component_="FBX" FileName="page.FBX" Attributes="0" SourcePath="..\Release\FBX\page.FBX" SelfReg="false" NextFile="result.txt"/>
+    <ROW File="readme.html" Component_="contents.html" FileName="readme~1.htm|readme.html" Attributes="0" SourcePath="..\lib\lua-5.2.2\doc\readme.html" SelfReg="false" NextFile="lua5.2.2.lib"/>
+    <ROW File="result.txt" Component_="FBX" FileName="result.txt" Attributes="0" SourcePath="..\Release\FBX\result.txt" SelfReg="false" NextFile="Rock1.fbx"/>
+    <ROW File="sig.fbx" Component_="FBX" FileName="sig.fbx" Attributes="0" SourcePath="..\Release\FBX\sig.fbx" SelfReg="false" NextFile="sigResult"/>
+    <ROW File="sigResult" Component_="FBX" FileName="sigRes~1|sigResult" Attributes="0" SourcePath="..\Release\FBX\sigResult" SelfReg="false" NextFile="slide.tga"/>
+    <ROW File="slide.tga" Component_="FBX" FileName="slide.tga" Attributes="0" SourcePath="..\Release\FBX\slide.tga" SelfReg="false" NextFile="T1.FBX"/>
+    <ROW File="specular.tga" Component_="diffuse.tga" FileName="specular.tga" Attributes="0" SourcePath="..\Release\FBX\shadow\specular.tga" SelfReg="false" NextFile="txt"/>
+    <ROW File="test" Component_="FBX" FileName="test" Attributes="0" SourcePath="..\Release\FBX\test" SelfReg="false" NextFile="untitled.fbx"/>
+    <ROW File="texture.ps" Component_="texture.ps" FileName="texture.ps" Attributes="0" SourcePath="..\Ressources\texture.ps" SelfReg="false" NextFile="texture.vs"/>
+    <ROW File="texture.vs" Component_="texture.ps" FileName="texture.vs" Attributes="0" SourcePath="..\Ressources\texture.vs" SelfReg="false" NextFile="DirectXTex.h"/>
+    <ROW File="txt" Component_="diffuse.tga" FileName="说明.txt" Attributes="0" SourcePath="..\Release\FBX\shadow\说明.txt" SelfReg="false" NextFile="FBX"/>
+    <ROW File="untitled.fbx" Component_="FBX" FileName="untitled.fbx" Attributes="0" SourcePath="..\Release\FBX\untitled.fbx" SelfReg="false" NextFile="zomb.fbx"/>
+    <ROW File="zomb.fbx" Component_="FBX" FileName="zomb.fbx" Attributes="0" SourcePath="..\Release\FBX\zomb.fbx" SelfReg="false" NextFile="texture.ps"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.BuildComponent">
+    <ROW BuildKey="DefaultBuild" BuildName="DefaultBuild" BuildOrder="1" BuildType="0" PackageFolder="." PackageFileName="setup" Languages="fr" InstallationType="4" UseLargeSchema="true"/>
+    <ROW BuildKey="MixedPlatforms_Release" BuildName="MixedPlatforms_Release" BuildOrder="2" BuildType="0" PackageFolder="MixedPlatforms_ReleaseSetupFiles" PackageFileName="setup" Languages="fr" InstallationType="4" UseLargeSchema="true"/>
+    <ATTRIBUTE name="CurrentBuild" value="DefaultBuild"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.DictionaryComponent">
+    <ROW Path="&lt;AI_DICTS&gt;ui.ail"/>
+    <ROW Path="&lt;AI_DICTS&gt;ui_fr.ail"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.FragmentComponent">
+    <ROW Fragment="CommonUI.aip" Path="&lt;AI_FRAGS&gt;CommonUI.aip"/>
+    <ROW Fragment="FolderDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\FolderDlg.aip"/>
+    <ROW Fragment="MaintenanceTypeDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\MaintenanceTypeDlg.aip"/>
+    <ROW Fragment="MaintenanceWelcomeDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\MaintenanceWelcomeDlg.aip"/>
+    <ROW Fragment="SequenceDialogs.aip" Path="&lt;AI_THEMES&gt;classic\fragments\SequenceDialogs.aip"/>
+    <ROW Fragment="Sequences.aip" Path="&lt;AI_FRAGS&gt;Sequences.aip"/>
+    <ROW Fragment="StaticUIStrings.aip" Path="&lt;AI_FRAGS&gt;StaticUIStrings.aip"/>
+    <ROW Fragment="UI.aip" Path="&lt;AI_THEMES&gt;classic\fragments\UI.aip"/>
+    <ROW Fragment="Validation.aip" Path="&lt;AI_FRAGS&gt;Validation.aip"/>
+    <ROW Fragment="VerifyRemoveDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\VerifyRemoveDlg.aip"/>
+    <ROW Fragment="VerifyRepairDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\VerifyRepairDlg.aip"/>
+    <ROW Fragment="WelcomeDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\WelcomeDlg.aip"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiBinaryComponent">
+    <ROW Name="aicustact.dll" SourcePath="&lt;AI_CUSTACTS&gt;aicustact.dll"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiControlEventComponent">
+    <ROW Dialog_="WelcomeDlg" Control_="Next" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="FolderDlg" Control_="Next" Event="NewDialog" Argument="VerifyReadyDlg" Condition="AI_INSTALL" Ordering="201"/>
+    <ROW Dialog_="FolderDlg" Control_="Back" Event="NewDialog" Argument="WelcomeDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="MaintenanceWelcomeDlg" Control_="Next" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT" Ordering="99"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_MAINT" Ordering="198"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Back" Event="NewDialog" Argument="CustomizeDlg" Condition="AI_MAINT" Ordering="202"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_INSTALL" Ordering="197"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Back" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="201"/>
+    <ROW Dialog_="CustomizeDlg" Control_="Next" Event="NewDialog" Argument="VerifyReadyDlg" Condition="AI_MAINT" Ordering="101"/>
+    <ROW Dialog_="CustomizeDlg" Control_="Back" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT" Ordering="1"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="ChangeButton" Event="NewDialog" Argument="CustomizeDlg" Condition="AI_MAINT" Ordering="501"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="Back" Event="NewDialog" Argument="MaintenanceWelcomeDlg" Condition="AI_MAINT" Ordering="1"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="RemoveButton" Event="NewDialog" Argument="VerifyRemoveDlg" Condition="AI_MAINT AND InstallMode=&quot;Remove&quot;" Ordering="601"/>
+    <ROW Dialog_="VerifyRemoveDlg" Control_="Back" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT AND InstallMode=&quot;Remove&quot;" Ordering="1"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="RepairButton" Event="NewDialog" Argument="VerifyRepairDlg" Condition="AI_MAINT AND InstallMode=&quot;Repair&quot;" Ordering="601"/>
+    <ROW Dialog_="VerifyRepairDlg" Control_="Back" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT AND InstallMode=&quot;Repair&quot;" Ordering="1"/>
+    <ROW Dialog_="VerifyRepairDlg" Control_="Repair" Event="EndDialog" Argument="Return" Condition="AI_MAINT AND InstallMode=&quot;Repair&quot;" Ordering="399" Options="1"/>
+    <ROW Dialog_="VerifyRemoveDlg" Control_="Remove" Event="EndDialog" Argument="Return" Condition="AI_MAINT AND InstallMode=&quot;Remove&quot;" Ordering="299" Options="1"/>
+    <ROW Dialog_="PatchWelcomeDlg" Control_="Next" Event="NewDialog" Argument="VerifyReadyDlg" Condition="AI_PATCH" Ordering="201"/>
+    <ROW Dialog_="ResumeDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_RESUME" Ordering="299"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_PATCH" Ordering="199"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Back" Event="NewDialog" Argument="PatchWelcomeDlg" Condition="AI_PATCH" Ordering="203"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCreateFolderComponent">
+    <ROW Directory_="SHORTCUTDIR" Component_="SHORTCUTDIR"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCustActComponent">
+    <ROW Action="AI_DOWNGRADE" Type="19" Target="4010"/>
+    <ROW Action="AI_DpiContentScale" Type="1" Source="aicustact.dll" Target="DpiContentScale"/>
+    <ROW Action="AI_InstallModeCheck" Type="1" Source="aicustact.dll" Target="UpdateInstallMode" WithoutSeq="true"/>
+    <ROW Action="AI_PREPARE_UPGRADE" Type="65" Source="aicustact.dll" Target="PrepareUpgrade"/>
+    <ROW Action="AI_RESTORE_LOCATION" Type="65" Source="aicustact.dll" Target="RestoreLocation"/>
+    <ROW Action="AI_ResolveKnownFolders" Type="1" Source="aicustact.dll" Target="AI_ResolveKnownFolders"/>
+    <ROW Action="AI_ResolveLocalizedCredentials" Type="1" Source="aicustact.dll" Target="GetLocalizedCredentials"/>
+    <ROW Action="AI_SHOW_LOG" Type="65" Source="aicustact.dll" Target="LaunchLogFile" WithoutSeq="true"/>
+    <ROW Action="AI_STORE_LOCATION" Type="51" Source="ARPINSTALLLOCATION" Target="[APPDIR]"/>
+    <ROW Action="SET_APPDIR" Type="307" Source="APPDIR" Target="[ProgramFilesFolder][Manufacturer]\[ProductName]"/>
+    <ROW Action="SET_SHORTCUTDIR" Type="307" Source="SHORTCUTDIR" Target="[ProgramMenuFolder][ProductName]"/>
+    <ROW Action="SET_TARGETDIR_TO_APPDIR" Type="51" Source="TARGETDIR" Target="[APPDIR]"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiInstExSeqComponent">
+    <ROW Action="AI_DOWNGRADE" Condition="AI_NEWERPRODUCTFOUND AND (UILevel &lt;&gt; 5)" Sequence="210"/>
+    <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>
+    <ROW Action="AI_STORE_LOCATION" Condition="(Not Installed) OR REINSTALL" Sequence="1501"/>
+    <ROW Action="AI_PREPARE_UPGRADE" Condition="AI_UPGRADE=&quot;No&quot; AND (Not Installed)" Sequence="1399"/>
+    <ROW Action="AI_ResolveKnownFolders" Sequence="52"/>
+    <ROW Action="AI_ResolveLocalizedCredentials" Sequence="51"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiInstallUISequenceComponent">
+    <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>
+    <ROW Action="AI_ResolveKnownFolders" Sequence="53"/>
+    <ROW Action="AI_ResolveLocalizedCredentials" Sequence="52"/>
+    <ROW Action="AI_DpiContentScale" Sequence="51"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiLaunchConditionsComponent">
+    <ROW Condition="(VersionNT &lt;&gt; 400)" Description="[ProductName] cannot be installed on the following Windows versions: [WindowsTypeNT40Display]" DescriptionLocId="AI.LaunchCondition.NoNT40" IsPredefined="true" Builds="DefaultBuild;MixedPlatforms_Release"/>
+    <ROW Condition="VersionNT" Description="[ProductName] cannot be installed on [WindowsType9XDisplay]" DescriptionLocId="AI.LaunchCondition.No9X" IsPredefined="true" Builds="DefaultBuild;MixedPlatforms_Release"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiRegsComponent">
+    <ROW Registry="Path" Root="-1" Key="Software\[Manufacturer]\[ProductName]" Name="Path" Value="[APPDIR]" Component_="ProductInformation"/>
+    <ROW Registry="Version" Root="-1" Key="Software\[Manufacturer]\[ProductName]" Name="Version" Value="[ProductVersion]" Component_="ProductInformation"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiShortsComponent">
+    <ROW Shortcut="Editor.exe" Directory_="SHORTCUTDIR" Name="Editor.exe" Component_="Editor.exe" Target="[#Editor.exe]" Description="Editor.exe" Hotkey="0" IconIndex="0" ShowCmd="1" WkDir="APPDIR"/>
+    <ROW Shortcut="Editor.exe_1" Directory_="DesktopFolder" Name="Editor.exe" Component_="Editor.exe" Target="[#Editor.exe]" Description="Editor.exe" Hotkey="0" IconIndex="0" ShowCmd="1" WkDir="Binary_Dir"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiThemeComponent">
+    <ATTRIBUTE name="UsedTheme" value="classic"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiUpgradeComponent">
+    <ROW UpgradeCode="[|UpgradeCode]" VersionMax="[|ProductVersion]" Attributes="1025" ActionProperty="OLDPRODUCTS"/>
+    <ROW UpgradeCode="[|UpgradeCode]" VersionMin="[|ProductVersion]" Attributes="2" ActionProperty="AI_NEWERPRODUCTFOUND"/>
+  </COMPONENT>
+</DOCUMENT>

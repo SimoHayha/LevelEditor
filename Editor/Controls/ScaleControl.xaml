@@ -1,0 +1,58 @@
+﻿<UserControl x:Class="Editor.Controls.ScaleControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Model="clr-namespace:Editor.Model"
+             mc:Ignorable="d" 
+             d:DesignHeight="75" d:DesignWidth="200">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <Label>ScaleX</Label>
+            </Grid>
+            <Grid Grid.Column="1">
+                <TextBox Text="{Binding Model.SelectedEntity.ScaleX}" />
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <Label>ScaleY</Label>
+            </Grid>
+            <Grid Grid.Column="1">
+                <TextBox Text="{Binding Model.SelectedEntity.ScaleY}" />
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <Label>ScaleZ</Label>
+            </Grid>
+            <Grid Grid.Column="1">
+                <TextBox Text="{Binding Model.SelectedEntity.ScaleZ}" />
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>
